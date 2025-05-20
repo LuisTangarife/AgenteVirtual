@@ -1,82 +1,121 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AdmiRegBot - UAM</title>
-  <link rel="stylesheet" href="estilos.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>ChatBot RPG</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: "Segoe UI", sans-serif;
+            background-color: #1e1e2f;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
 
+        #menu-categorias {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 20px;
+            justify-content: center;
+            background-color: #2e2e40;
+            border-bottom: 2px solid #444;
+        }
+
+        .categoria {
+            background-color: #444;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .categoria:hover {
+            background-color: #666;
+        }
+
+        #preguntas {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+            padding: 10px 20px;
+        }
+
+        .pregunta-btn {
+            background-color: #333;
+            padding: 8px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .pregunta-btn:hover {
+            background-color: #555;
+        }
+
+        #chat {
+            padding: 20px;
+            max-width: 800px;
+            margin: auto;
+            min-height: 300px;
+        }
+
+        .mensaje {
+            margin-bottom: 15px;
+        }
+
+        .usuario {
+            font-weight: bold;
+            color: #7cd1ff;
+        }
+
+        .bot {
+            color: #90ee90;
+        }
+
+        #input-container {
+            display: flex;
+            justify-content: center;
+            padding: 10px 20px;
+            gap: 10px;
+        }
+
+        #input {
+            width: 300px;
+            padding: 8px;
+            border-radius: 5px;
+            border: none;
+        }
+
+        #enviar {
+            padding: 8px 15px;
+            border: none;
+            background-color: #28a745;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #enviar:hover {
+            background-color: #218838;
+        }
+    </style>
 </head>
 <body>
+    <h1 style="text-align:center; padding-top: 10px;">🤖 ChatBot RPG</h1>
 
-  <!-- Fondo oscuro futurista -->
-  <div class="overlay"></div>
+    <div id="menu-categorias"></div>
+    <div id="preguntas"></div>
 
-  <!-- 💡 Preguntas frecuentes flotando -->
-  <div class="floating-help">
-    <h4>💡 Preguntas frecuentes</h4>
-    <ul>
-      <li><b>📚 Créditos:</b> Solicitud de créditos por promedio</li>
-      <li><b>🧾 Doble carrera:</b> Distribución de créditos de doble carrera</li>
-      <li><b>📄 Créditos adicionales:</b> Solicitud de recibo para créditos adicionales</li>
-      <li><b>📄 Homologación:</b> Solicitud de recibo para homologación</li>
-      <li><b>💵 Corrección de recibos:</b> Corrección del recibo de matrícula</li>
-      <li><b>📝 Solicitud de recibos:</b> Solicitud de recibo de matrícula</li>
-      <li><b>🔎 Otros temas:</b> Otros</li>
-    </ul>
-  </div>
-  <!-- Chatbot -->
-  <div class="chat-container">
-    <div class="chatbot-header">
-      <img src="logo-uam.png" alt="Logo UAM" class="logo" />
-      <h1>Admisiones y Registro Académico UAM</h1>
+    <div id="chat"></div>
+
+    <div id="input-container">
+        <input type="text" id="input" placeholder="Escribe tu pregunta...">
+        <button id="enviar">Enviar</button>
     </div>
 
-    <div class="menu-buttons">
-      <button onclick="quickReply('Matriculas')">📌 Matrícula</button>
-      <button onclick="quickReply('homologación de inglés')">📄 Homologación</button>
-      <button onclick="quickReply('validación inglés')">✅ Validación de inglés</button>
-      <button onclick="quickReply('cancelar materia')">🚫 Cancelar materia</button>
-      <button onclick="quickReply('reglamento estudiantil')">📘 Reglamento</button>
-      <button onclick="quickReply('certificados')">📥 Certificados</button>
-    </div>
-
-    <div class="chat-window" id="chat-box">
-      <p>👋 ¡Hola! ¿En qué puedo ayudarte hoy?</p>
-    </div>
-
-    <div class="chat-input-container">
-      <input type="text" id="user-input" placeholder="Escribe tu pregunta aquí..." />
-      <button onclick="sendMessage()">Enviar</button>
-    </div>
-  </div>
-  <div style="text-align: center; margin-top: 10px;">
-    <button onclick="limpiarHistorial()" style="background-color:#ff4d4d; color:white; padding:8px 16px; border:none; border-radius:10px; cursor:pointer;">🧹 Limpiar Chat</button>
-  </div>
-  
-  
-
-  <script src="chatbot.js" defer></script>
-<!-- Contenedor para mostrar las guías -->
-<div id="contenedor-guia" class="guia-container oculto">
-  <button class="btn-cerrar-guia" onclick="cerrarGuia()">❌</button>
-  
-  <!-- Agregar iframe para mostrar contenido de la guía -->
-  <iframe id="guia-frame" src="" frameborder="0"></iframe>
-</div>
-<!-- Menú semicircular de guías -->
-<div class="menu-guias">
-  <input type="checkbox" id="toggle-menu" />
-  <label for="toggle-menu" class="menu-icono">📚</label>
-  <div class="menu-items">
-    <button onclick="cargarGuia('Guia-PDF')" title="Condición Académica">🎓</button>
-    <button onclick="cargarGuia('recibo')" title="Recibos">🧾</button>
-    <button onclick="cargarGuia('carnets')" title="Base Carnets">🧬</button>
-    <button onclick="cargarGuia('proceso')" title="Carnetización">🪪</button>
-  </div>
-</div>
-<script src="https://webgrid.autonoma.edu.co/uamvirtual/mod/hvp/library/js/h5p-resizer.js" charset="UTF-8"></script>
-<script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

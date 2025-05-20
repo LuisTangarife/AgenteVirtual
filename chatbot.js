@@ -131,8 +131,8 @@ async function getBotResponse(userInput) {
       const mejorCoincidencia = resultados[0].item;
       return `
         <div class="bot-respuesta">
-          🤖 <strong>${mejorCoincidencia.tema}</strong><br>
-          ${mejorCoincidencia.descripcion}<br>
+          🤖 <strong>${mejorCoincidencia.pregunta}</strong><br>
+          ${mejorCoincidencia.respuesta}<br>
           🌐 <a href="${mejorCoincidencia.url}" target="_blank">Ver más</a>
         </div>
       `;

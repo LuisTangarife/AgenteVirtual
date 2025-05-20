@@ -1,5 +1,6 @@
 [
   {
+    "tema": "Reglamento Estudiantil",
     "categoria": "Reglamento Estudiantil",
     "subcategoria": "General",
     "preguntas": [
@@ -28,6 +29,7 @@
     ]
   },
   {
+    "tema": "Programas Académicos",
     "categoria": "Programas Académicos",
     "subcategoria": "Ingeniería Industrial",
     "preguntas": [
@@ -56,6 +58,7 @@
     ]
   },
   {
+    "tema": "Derechos Pecuniarios",
     "categoria": "Derechos Pecuniarios",
     "subcategoria": "2025",
     "preguntas": [
@@ -84,6 +87,7 @@
     ]
   },
   {
+    "tema": "Trámites Académicos",
     "categoria": "Trámites Académicos",
     "subcategoria": "Solicitudes",
     "preguntas": [
@@ -112,6 +116,7 @@
     ]
   },
   {
+    "tema": "Admisiones",
     "categoria": "Admisiones",
     "subcategoria": "Inscripción",
     "preguntas": [

@@ -2,68 +2,81 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ChatBot Interactivo</title>
-  <style>
-    body { font-family: Arial, sans-serif; padding: 20px; background: #f2f2f2; }
-    #chat { border: 1px solid #ccc; padding: 10px; height: 300px; overflow-y: scroll; background: #fff; }
-    .mensaje { margin: 5px 0; }
-    .bot { color: blue; }
-    .usuario { color: green; }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AdmiRegBot - UAM</title>
+  <link rel="stylesheet" href="estilos.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
+
 </head>
 <body>
-  <h2>ChatBot de Juego</h2>
-  <div id="chat"></div>
-  <input type="text" id="input" placeholder="Escribe tu mensaje aquí..." />
-  <button onclick="enviarMensaje()">Enviar</button>
 
-  <script>
-    const baseConocimiento = [
-      {
-        categoria: "Combate",
-        pregunta: "¿Cómo peleo contra un dragón?",
-        respuesta: "Debes usar tu espada mágica y evitar su aliento de fuego. ¡Recuerda tener pociones listas!"
-      },
-      {
-        categoria: "Exploración",
-        pregunta: "¿Dónde encuentro la llave del castillo?",
-        respuesta: "La llave está escondida en la cueva del bosque oscuro, custodiada por duendes."
-      },
-      {
-        categoria: "Magia",
-        pregunta: "¿Cómo aprendo un nuevo hechizo?",
-        respuesta: "Necesitas encontrar un grimorio antiguo y estudiar durante la luna llena."
-      }
-    ];
+  <!-- Fondo oscuro futurista -->
+  <div class="overlay"></div>
 
-    function agregarMensaje(texto, clase) {
-      const chat = document.getElementById("chat");
-      const mensaje = document.createElement("div");
-      mensaje.className = "mensaje " + clase;
-      mensaje.textContent = texto;
-      chat.appendChild(mensaje);
-      chat.scrollTop = chat.scrollHeight;
-    }
+  <!-- 💡 Preguntas frecuentes flotando -->
+  <div class="floating-help">
+    <h4>💡 Preguntas frecuentes</h4>
+    <ul>
+      <li><b>📚 Créditos:</b> Solicitud de créditos por promedio</li>
+      <li><b>🧾 Doble carrera:</b> Distribución de créditos de doble carrera</li>
+      <li><b>📄 Créditos adicionales:</b> Solicitud de recibo para créditos adicionales</li>
+      <li><b>📄 Homologación:</b> Solicitud de recibo para homologación</li>
+      <li><b>💵 Corrección de recibos:</b> Corrección del recibo de matrícula</li>
+      <li><b>📝 Solicitud de recibos:</b> Solicitud de recibo de matrícula</li>
+      <li><b>🔎 Otros temas:</b> Otros</li>
+    </ul>
+  </div>
+  <!-- Chatbot -->
+  <div class="chat-container">
+    <div class="chatbot-header">
+      <img src="logo-uam.png" alt="Logo UAM" class="logo" />
+      <h1>Admisiones y Registro Académico UAM</h1>
+    </div>
 
-    function enviarMensaje() {
-      const input = document.getElementById("input");
-      const texto = input.value.trim();
-      if (texto === "") return;
-      agregarMensaje("Tú: " + texto, "usuario");
+    <div class="menu-buttons">
+      <button onclick="quickReply('Matriculas')">📌 Matrícula</button>
+      <button onclick="quickReply('homologación de inglés')">📄 Homologación</button>
+      <button onclick="quickReply('validación inglés')">✅ Validación de inglés</button>
+      <button onclick="quickReply('cancelar materia')">🚫 Cancelar materia</button>
+      <button onclick="quickReply('reglamento estudiantil')">📘 Reglamento</button>
+      <button onclick="quickReply('certificados')">📥 Certificados</button>
+    </div>
 
-      const resultado = baseConocimiento.find(entry =>
-        texto.toLowerCase().includes(entry.pregunta.toLowerCase())
-      );
+    <div class="chat-window" id="chat-box">
+      <p>👋 ¡Hola! ¿En qué puedo ayudarte hoy?</p>
+    </div>
 
-      if (resultado) {
-        agregarMensaje("Bot: " + resultado.respuesta, "bot");
-      } else {
-        agregarMensaje("Bot: Lo siento, no sé la respuesta a eso todavía.", "bot");
-      }
+    <div class="chat-input-container">
+      <input type="text" id="user-input" placeholder="Escribe tu pregunta aquí..." />
+      <button onclick="sendMessage()">Enviar</button>
+    </div>
+  </div>
+  <div style="text-align: center; margin-top: 10px;">
+    <button onclick="limpiarHistorial()" style="background-color:#ff4d4d; color:white; padding:8px 16px; border:none; border-radius:10px; cursor:pointer;">🧹 Limpiar Chat</button>
+  </div>
+  
+  
 
-      input.value = "";
-    }
-  </script>
+  <script src="chatbot.js" defer></script>
+<!-- Contenedor para mostrar las guías -->
+<div id="contenedor-guia" class="guia-container oculto">
+  <button class="btn-cerrar-guia" onclick="cerrarGuia()">❌</button>
+  
+  <!-- Agregar iframe para mostrar contenido de la guía -->
+  <iframe id="guia-frame" src="" frameborder="0"></iframe>
+</div>
+<!-- Menú semicircular de guías -->
+<div class="menu-guias">
+  <input type="checkbox" id="toggle-menu" />
+  <label for="toggle-menu" class="menu-icono">📚</label>
+  <div class="menu-items">
+    <button onclick="cargarGuia('Guia-PDF')" title="Condición Académica">🎓</button>
+    <button onclick="cargarGuia('recibo')" title="Recibos">🧾</button>
+    <button onclick="cargarGuia('carnets')" title="Base Carnets">🧬</button>
+    <button onclick="cargarGuia('proceso')" title="Carnetización">🪪</button>
+  </div>
+</div>
+<script src="https://webgrid.autonoma.edu.co/uamvirtual/mod/hvp/library/js/h5p-resizer.js" charset="UTF-8"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.js"></script>
 </body>
 </html>

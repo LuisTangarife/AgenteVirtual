@@ -1,177 +1,142 @@
 [
-    {
-        "tema": "¿Qué es el diploma de grado?",
-        "descripcion": "Los diplomas son documentos a través de los cuales una institución educativa confiere un grado académico a un estudiante, que cumple con todos los requisitos legales y reglamentarios para optar por el título.",
-        "url": "https://www.autonoma.edu.co/conoce-la-uam/sobre-la-uam"
-    },
-    {
-        "tema": "¿Qué es el acta de grado?",
-        "descripcion": "Documento que se entrega a los graduados y que tiene la finalidad de registrar el momento de la obtención de un título académico, previo el cumplimiento de los requisitos de grado, documento este que registra en un folio y se incorpora en el libro de graduados que constituyen el registro y archivo institucional de la Universidad.",
-        "url": "https://www.autonoma.edu.co/programas"
-    },
-    {
-        "tema": "¿Por qué debo presentar las pruebas Saber Pro antes de graduarme?",
-        "descripcion": "De conformidad con lo establecido en el literal b) del parágrafo segundo del artículo 7 de la Ley 1324 de 2009, es obligatoria la práctica de los exámenes de estado en cada institución que imparta programas académicos de educación media y superior, con el objeto de comprobar el desarrollo de competencias de los estudiantes próximos a culminar los programas académicos de pregrado a nivel nacional.",
-        "url": "https://www.autonoma.edu.co/programas"
-    },
-    {
-        "tema": "¿Cómo puedo solicitar aplazar mi semestre?",
-        "descripcion": "Se solicita directamente con el coordinador del programa, para que quede constancia enviarlo a través de correo electrónico y así él devuelve un formato de reserva, el cual usted debe diligenciar y enviar de nuevo firmado. La reserva quedará activa durante los dos años siguientes.",
-        "url": "https://www.autonoma.edu.co/conoce-la-uam/sobre-la-uam"
-    },
-    {
-        "tema": "¿Cómo se otrogan los Grados de Honor?",
-        "descripcion": "El grado de honor, es un incentivo académico, y es la máxima distinción otorgada a un estudiante de pregrado, que cumpla con los requisitos señalados en el Acuerdo 001 de marzo 21 de 2018, dichos requisitos deberán acreditarse ante la Coordinación de Programa y Decanatura correspondientes, previamente a la celebración de las ceremonias de grado en donde se hará pública la distinción referida.",
-        "url": "https://www.autonoma.edu.co/conoce-la-uam/sobre-la-uam"
-    },
-    {
-        "tema": "¿Qué descuentos tengo por ser graduado UAM?",
-        "descripcion": "Por ser graduado UAM tienes derecho a un descuento del 3% de la matrícula de estudios de Postgrado y un 3% adicional si estás afiliado a la Asociación de Graduados - GradUAM.Tus hijos tienen un descuento en la matrícula de pregrado y posgrado de acuerdo con la cantidad de programas que hayas terminado en la UAM y un descuento adicional si estás afiliado a la Asociación de Graduados - GradUAM. También tienes descuento en el Instituto de Idiomas y en los cursos de Educación Continuada Esta información la puedes solicitar en los siguientes correos electrónicos. graduadosuam@autonoma.edu.co - servicioalcliente@autonoma.edu.co - econti@autonoma.edu.co - idiomas@autonoma.edu.co ",
-        "url": "https://www.autonoma.edu.co/conoce-la-uam/sobre-la-uam"
-    },
-    {
-        "tema": "¿Qué hago si necesito un certificado o documento como graduado?",
-        "descripcion": "Cuando necesites actas de grado, duplicado de diplomas, constancias de grado, certificado de calificaciones y contenidos programáticos de tu carrera, los puedes solicitar a través de la página web de la Universidad en el botón PQRSF https://sgd.autonoma.edu.co/pqrsf/create, diligenciar el formato y escoges en rol de la Institución GRADUADOS. También puedes escribirnos tus dudas o comentarios al correo graduadosuam@autonoma.edu.co ",
-        "url": "https://www.autonoma.edu.co/programas"
-    },
-    {
-        "tema": "¿Cómo pago el certificado de matrícula?",
-        "descripcion": "El certificado de matrícula tiene un costo de $23.750; puede pagarlo en línea (recomendado, entrega en 2 días hábiles) usando PSE o generando recibo, o mediante transferencia bancaria (entrega en 3-4 días hábiles) a Davivienda 25699266-0 o Bancolombia 7055009711-0. Ingrese al link de pagos y recuerde que el certificado se enviará al correo institucional.",
-        "url": "https://www.autonoma.edu.co/programas"
-    },
-    {
-        "tema": "Certificados",
-        "descripcion": "Los certificados son solicitados por la página de la universidad. Para ello, debes ingresar a la página oficial escribiendo en el buscador autonoma.edu.co. Luego aparecerá en la parte lateral derecha un ícono morado '+ Servicios'. Selecciona 'Certificado académico - Seleccionar certificado'. En tipos de certificados eliges el que requieras. Puedes revisar las plantillas antes de solicitarlo. Una vez presionado 'Solicitar certificado', digita los campos requeridos y asegúrate de que el correo que aparece sea el que tienes activo, porque allí te llegará el certificado cuando esté elaborado. ¿Lo requieres en físico, es para alguna entidad (Confa, etc.) o tienes condiciones adicionales? Si requieres algo de esto, responde 'Si'.",
-        "url": "https://intrauam.autonoma.edu.co/intrauam2/certificados/certificados/tiposCertificado"
-   },
-   {
-       "tema": "Si",
-       "descripcion": "Si requieres el certificado en físico o para ser presentado a alguna entidad como CONFA, en la casilla de información complementaria nos lo puedes hacer saber y te daremos la respuesta según corresponda. Normalmente, la elaboración y envío de certificados tarda de dos a tres días hábiles después de que el pago esté registrado en el sistema. Si lo pagas por transferencia o generas el recibo y lo pagas en un punto físico, debes subir el comprobante de pago. ¿Quieres saber sobre el valor de los certificados y cómo subir el comprobante? Responde con la palabra 'quiero' si así lo requieres.",
-       "url": "https://www.autonoma.edu.co"
-   },
-   {
-        "tema": "Quiero",
-        "descripcion": "El valor del certificado depende del tipo requerido: el certificado de matrícula tiene un costo de 23.750 pesos colombianos, el certificado de notas depende del número de periodos; para un solo periodo cuesta 23.750 pesos colombianos, pero si se requieren varios periodos, se debe multiplicar este valor por la cantidad de periodos a certificar.",
-        "url": "https://www.autonoma.edu.co/apoyos/programas-de-becas"
-    },
-    {
-        "tema": "SOLICITUD DE CREDITOS POR PROMEDIO",
-        "descripcion": "Para acceder a los créditos por promedio debe: pagar el total de la matrícula (Rango 18 programas diurnos, Rango 14 programas extendidos), verificar el estado de pago en IntraUAM, cumplir promedio acumulado ≥ 4.0, registrar todas las notas en el sistema, y si no se habilitan los créditos, solicitarlo en PQRSF.",
-        "url": "https://sgd.autonoma.edu.co/pqrsf/create"
-    },
-    {
-        "tema": "DISTRIBUCION DE CREDITOS DE DOBLE CARRERA",
-        "descripcion": "Para distribuir créditos en doble carrera: pagar matrícula, cargar comprobante en la plataforma, diligenciar formulario en IntraUAM Estudiantes Doble Programa, y cumplir límites de créditos adicionales según rango.",
-        "url": "https://docs.google.com/forms/d/1oIiyoThw42-IlFERBf-I1-n06NbbnAEt8coeJAfZyx8/edit"
-    },
-    {
-        "tema": "SOLICITUD DE RECIBO PARA CREDITOS ADICIONALES",
-        "descripcion": "Solicitar el recibo de créditos adicionales diligenciando el formulario en IntraUAM. El recibo se genera tras el pago de matrícula. Descargar recibo en IntraUAM. Consultar valores de créditos en archivo oficial.",
-        "url": "https://portalconocimiento.autonoma.edu.co/?p=3558"
-    },
-    {
-        "tema": "SOLICITUD DE RECIBO PARA HOMOLOGACION",
-        "descripcion": "La generación del recibo de homologación debe solicitarse directamente en la oficina correspondiente.",
-        "url": ""
-    },
-    {
-        "tema": "Descuento bachiller excelencia",
-        "descripcion": "Para aplicar descuento: notas cargadas, promedio ≥ 4.2 (50%) o promedio ≥ 3.5 e inferior a 4.2 (10%), sin cancelaciones. Solicitar ajuste en PQRSF si no se aplica automáticamente.",
-        "url": "https://sgd.autonoma.edu.co/pqrsf/create"
-    },
-    {
-        "tema": "Beneficio plan estudia y regreso U",
-        "descripcion": "Beneficios de plan estudia y PRU se aplican en recibos de matrícula generados tras la aprobación. Ajustes de plazo de pago incluidos.",
-        "url": ""
-    },
-    {
-        "tema": "Descuento Municipio de Manizales",
-        "descripcion": "Para aplicar descuento, presentar certificado vigente firmado por la doctora Claudia Villegas H.",
-        "url": ""
-    },
-    {
-        "tema": "Descuento hijo de graduado",
-        "descripcion": "Presentar certificado vigente de la Asociación de Graduados UAM especificando la relación y programas graduados.",
-        "url": ""
-    },
-    {
-        "tema": "Descuento Beca Fondo Patrimonial",
-        "descripcion": "El descuento por Fondo Patrimonial depende de la autorización previa del Comité de Becas.",
-        "url": ""
-    },
-    {
-        "tema": "Descuento UAM",
-        "descripcion": "Aplicación requiere promedio semestral ≥ 3.5, sin cancelación de asignaturas y notas cargadas. Solicitar ajuste si no aparece.",
-        "url": "https://sgd.autonoma.edu.co/pqrsf/create"
-    },
-    {
-        "tema": "Descuento hermanos",
-        "descripcion": "El descuento aplica solo si ambos hermanos se matriculan en el mismo periodo académico.",
-        "url": ""
-    },
-    {
-        "tema": "Descuento egresado Colegio Autónoma",
-        "descripcion": "Presentar constancia de Fundeca indicando los años cursados en el colegio Autónoma.",
-        "url": ""
-    },
-    {
-        "tema": "Descuento Vamos pa' lante",
-        "descripcion": "Condiciones: no perder o cancelar asignaturas, promedio ≥ 3.5, sin sanciones disciplinarias y notas cargadas. Solicitar ajuste si no aparece.",
-        "url": "https://sgd.autonoma.edu.co/pqrsf/create"
-    },
-    {
-        "tema": "SOLICITUD DE RECIBO DE MATRÍCULA",
-        "descripcion": "Recibos para pregrado y posgrado se descargan desde IntraUAM. Si hay saldo pendiente, contactar Cartera. Instructivo disponible.",
-        "url": "https://portalconocimiento.autonoma.edu.co/?p=3558"
-    },
-    {
-        "tema": "SOLICITUD DE RECIBO DE MATRÍCULA POSGRADO",
-        "descripcion": "Recibo de matrícula para posgrado disponible desde el segundo periodo académico. Instructivo en el portal.",
-        "url": "https://portalconocimiento.autonoma.edu.co/?p=3558"
-    },
-    {
-        "tema": "RECIBO PERIODO EXTENDIDO",
-        "descripcion": "Notificación enviada por correo. Recibo disponible en IntraUAM tras 3 días hábiles.",
-        "url": "https://portalconocimiento.autonoma.edu.co/?p=3558"
-    },
-    {
-        "tema": "RECIBO REINGRESO PREGRADO",
-        "descripcion": "Solicitud de reingreso debe ser autorizada por la Coordinación del programa para generar el recibo.",
-        "url": "https://intrauam.autonoma.edu.co/ponline/pagosEnLinea/informacion/page/view/pagar_matricula"
-    },
-    {
-        "tema": "RECIBO REINGRESO POSGRADO",
-        "descripcion": "Solicitud de reingreso debe ser autorizada por Coordinación de la Unidad de Posgrados para generar el recibo.",
-        "url": "https://intrauam.autonoma.edu.co/ponline/pagosEnLinea/informacion/page/view/pagar_matricula"
-    },
-    {
-        "tema": "RECIBO DERECHOS DE GRADO",
-        "descripcion": "Recibo de derechos de grado generado a través del portal de pagos UAM.",
-        "url": "https://intrauam.autonoma.edu.co/ponline/pagosEnLinea/informacion/page/view/otros_conceptos"
-    },
-    {
-        "tema": "RECIBO REPITENCIA",
-        "descripcion": "Solicitar recibo de repitencia a través del sistema PQRSF.",
-        "url": "https://sgd.autonoma.edu.co/pqrsf/create"
-    },
-    {
-        "tema": "LEGALIZACION DE MATRÍCULA ECOPETROL",
-        "descripcion": "Solicitar legalización de matrícula ante Ecopetrol mediante PQRSF, categoría RECIBOS.",
-        "url": "https://sgd.autonoma.edu.co/pqrsf/create"
-    },
-    {
-        "tema": "RECIBO CANCELACION DE MATERIAS",
-        "descripcion": "Recibo generado a través del portal de pagos UAM para cancelación de materias.",
-        "url": "https://intrauam.autonoma.edu.co/ponline/pagosEnLinea/informacion/page/view/otros_conceptos"
-    },
-    {
-        "tema": "Biblioteca",
-        "descripcion": "La Universidad Autónoma de Manizales cuenta con una biblioteca moderna, acceso a bases de datos científicas, libros físicos y digitales.",
-        "url": "https://www.autonoma.edu.co/biblioteca"
-    },
-    {
-        "tema": "Nota mínima homologación",
-        "descripcion": "Interna: 3.0 | Externa: 3.5 | Reingreso: 3.2. Verifica que la nota esté en el listado y coincida con la carta antes de cargar en sistema.",
-        "url": "https://www.autonoma.edu.co"
-    }
+  {
+    "categoria": "Reglamento Estudiantil",
+    "subcategoria": "General",
+    "preguntas": [
+      "¿Dónde puedo consultar el reglamento estudiantil?",
+      "¿Cuál es el reglamento general para estudiantes?",
+      "Necesito información sobre el reglamento estudiantil"
+    ],
+    "respuesta": "Puedes consultar el Reglamento General Estudiantil de la Universidad Autónoma de Manizales. Este documento establece las normas y procedimientos que rigen la vida académica de los estudiantes.",
+    "enlaces": [
+      {
+        "titulo": "Reglamento General Estudiantil",
+        "url": "https://www.autonoma.edu.co/images/documentos/Reglamento_General_Estudiantil.pdf"
+      }
+    ],
+    "botones": [
+      {
+        "texto": "Ver Reglamento",
+        "accion": "enlace",
+        "destino": "https://www.autonoma.edu.co/images/documentos/Reglamento_General_Estudiantil.pdf"
+      },
+      {
+        "texto": "Consultar Pensum",
+        "accion": "pregunta",
+        "destino": "¿Cuál es el pensum del programa de Ingeniería Industrial?"
+      }
+    ]
+  },
+  {
+    "categoria": "Programas Académicos",
+    "subcategoria": "Ingeniería Industrial",
+    "preguntas": [
+      "¿Cuál es el pensum de Ingeniería Industrial?",
+      "Necesito el plan de estudios de Ingeniería Industrial",
+      "¿Qué materias se ven en Ingeniería Industrial?"
+    ],
+    "respuesta": "El programa de Ingeniería Industrial está diseñado para formar profesionales capaces de optimizar procesos y mejorar la eficiencia empresarial. Consulta el pensum completo aquí:",
+    "enlaces": [
+      {
+        "titulo": "Pensum Ingeniería Industrial",
+        "url": "https://www.autonoma.edu.co/oferta-academica/pregrados/ingenieria-industrial"
+      }
+    ],
+    "botones": [
+      {
+        "texto": "Ver Pensum",
+        "accion": "enlace",
+        "destino": "https://www.autonoma.edu.co/oferta-academica/pregrados/ingenieria-industrial"
+      },
+      {
+        "texto": "Consultar Derechos Pecuniarios",
+        "accion": "pregunta",
+        "destino": "¿Cuáles son los derechos pecuniarios para 2025?"
+      }
+    ]
+  },
+  {
+    "categoria": "Derechos Pecuniarios",
+    "subcategoria": "2025",
+    "preguntas": [
+      "¿Cuáles son los derechos pecuniarios para 2025?",
+      "Información sobre costos académicos",
+      "¿Dónde puedo ver los derechos pecuniarios actuales?"
+    ],
+    "respuesta": "Los derechos pecuniarios para el año 2025 incluyen costos de matrícula, certificados, validaciones y más. Puedes consultarlos aquí:",
+    "enlaces": [
+      {
+        "titulo": "Derechos Pecuniarios 2025",
+        "url": "https://www.autonoma.edu.co/images/documentos/Derechos_Pecuniarios_2025.pdf"
+      }
+    ],
+    "botones": [
+      {
+        "texto": "Ver Documento",
+        "accion": "enlace",
+        "destino": "https://www.autonoma.edu.co/images/documentos/Derechos_Pecuniarios_2025.pdf"
+      },
+      {
+        "texto": "Consultar Reglamento",
+        "accion": "pregunta",
+        "destino": "¿Dónde puedo consultar el reglamento estudiantil?"
+      }
+    ]
+  },
+  {
+    "categoria": "Trámites Académicos",
+    "subcategoria": "Solicitudes",
+    "preguntas": [
+      "¿Cómo hago una solicitud académica?",
+      "¿Dónde puedo hacer trámites estudiantiles?",
+      "Quiero saber cómo enviar una solicitud"
+    ],
+    "respuesta": "Para realizar solicitudes académicas debes ingresar a la plataforma institucional. Allí puedes encontrar trámites como cancelaciones, validaciones, certificaciones, entre otros.",
+    "enlaces": [
+      {
+        "titulo": "Plataforma de Solicitudes UAM",
+        "url": "https://uamvirtual.autonoma.edu.co/"
+      }
+    ],
+    "botones": [
+      {
+        "texto": "Ir a UAM Virtual",
+        "accion": "enlace",
+        "destino": "https://uamvirtual.autonoma.edu.co/"
+      },
+      {
+        "texto": "Ver Guía de Solicitudes",
+        "accion": "pregunta",
+        "destino": "¿Cómo hacer una solicitud de cancelación?"
+      }
+    ]
+  },
+  {
+    "categoria": "Admisiones",
+    "subcategoria": "Inscripción",
+    "preguntas": [
+      "¿Cómo me inscribo en un programa?",
+      "Pasos para inscribirse en la UAM",
+      "Quiero estudiar en la Autónoma, ¿qué hago?"
+    ],
+    "respuesta": "Puedes inscribirte a cualquier programa académico accediendo al formulario de inscripción de la UAM. Allí encontrarás las instrucciones paso a paso.",
+    "enlaces": [
+      {
+        "titulo": "Formulario de Inscripción",
+        "url": "https://www.autonoma.edu.co/inscripciones"
+      }
+    ],
+    "botones": [
+      {
+        "texto": "Inscribirme Ahora",
+        "accion": "enlace",
+        "destino": "https://www.autonoma.edu.co/inscripciones"
+      },
+      {
+        "texto": "Ver Programas Académicos",
+        "accion": "pregunta",
+        "destino": "¿Qué programas ofrece la UAM?"
+      }
+    ]
+  }
 ]

@@ -48,6 +48,9 @@
       <p>👋 ¡Hola! ¿En qué puedo ayudarte hoy?</p>
     </div>
 
+    <!-- Contenedor para botones dinámicos -->
+    <div id="botones-dinamicos" style="margin-top: 15px;"></div>
+
     <!-- Entrada de usuario -->
     <div class="chat-input-container">
       <input type="text" id="user-input" placeholder="Escribe tu pregunta aquí..." />
@@ -82,6 +85,106 @@
   <script src="chatbot.js" defer></script>
   <script src="https://webgrid.autonoma.edu.co/uamvirtual/mod/hvp/library/js/h5p-resizer.js" charset="UTF-8"></script>
   <script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.js"></script>
+
+  <script>
+    // Ejemplo JSON con un solo tema (puedes expandir a todo el JSON que tengas)
+    const datos = [
+      {
+        "tema": "Reglamento Estudiantil",
+        "categoria": "Reglamento Estudiantil",
+        "subcategoria": "General",
+        "preguntas": [
+          "¿Dónde puedo consultar el reglamento estudiantil?",
+          "¿Cuál es el reglamento general para estudiantes?",
+          "Necesito información sobre el reglamento estudiantil"
+        ],
+        "respuesta": "Puedes consultar el Reglamento General Estudiantil de la Universidad Autónoma de Manizales. Este documento establece las normas y procedimientos que rigen la vida académica de los estudiantes.",
+        "enlaces": [
+          {
+            "titulo": "Reglamento General Estudiantil",
+            "url": "https://www.autonoma.edu.co/images/documentos/Reglamento_General_Estudiantil.pdf"
+          }
+        ],
+        "botones": [
+          {
+            "texto": "Ver Reglamento",
+            "accion": "enlace",
+            "destino": "https://www.autonoma.edu.co/images/documentos/Reglamento_General_Estudiantil.pdf"
+          },
+          {
+            "texto": "Consultar Pensum",
+            "accion": "pregunta",
+            "destino": "¿Cuál es el pensum del programa de Ingeniería Industrial?"
+          }
+        ]
+      }
+    ];
+
+    // Función para mostrar botones dinámicos de un tema específico
+    function mostrarBotones(tema) {
+      const contenedor = document.getElementById('botones-dinamicos');
+      contenedor.innerHTML = ''; // Limpiar contenido previo
+
+      // Buscar el tema en datos
+      const temaData = datos.find(item => item.tema.toLowerCase() === tema.toLowerCase());
+      if (!temaData || !temaData.botones) return;
+
+      temaData.botones.forEach(boton => {
+        const btn = document.createElement('button');
+        btn.textContent = boton.texto;
+        btn.style.marginRight = '10px';
+        btn.style.padding = '8px 15px';
+        btn.style.borderRadius = '6px';
+        btn.style.border = 'none';
+        btn.style.cursor = 'pointer';
+        btn.style.backgroundColor = '#0078d7';
+        btn.style.color = 'white';
+        btn.title = boton.texto;
+
+        // Acción según tipo
+        btn.onclick = () => {
+          if (boton.accion === 'enlace') {
+            window.open(boton.destino, '_blank');
+          } else if (boton.accion === 'pregunta') {
+            // Aquí puedes manejar la acción de pregunta, por ejemplo mostrar en el chat la pregunta
+            agregarMensajeUsuario(boton.destino);
+            // Simular respuesta automática o búsqueda
+            setTimeout(() => {
+              agregarMensajeBot("Buscando información para: " + boton.destino);
+              // Aquí iría tu función de búsqueda o respuesta real
+            }, 500);
+          }
+        };
+
+        contenedor.appendChild(btn);
+      });
+    }
+
+    // Funciones ejemplo para agregar mensajes al chat (puedes adaptar al sistema real)
+    function agregarMensajeUsuario(texto) {
+      const chatBox = document.getElementById('chat-box');
+      const p = document.createElement('p');
+      p.textContent = 'Tú: ' + texto;
+      p.style.fontWeight = 'bold';
+      chatBox.appendChild(p);
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    function agregarMensajeBot(texto) {
+      const chatBox = document.getElementById('chat-box');
+      const p = document.createElement('p');
+      p.textContent = 'Bot: ' + texto;
+      chatBox.appendChild(p);
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    // Ejemplo: Mostrar botones para el tema "Reglamento Estudiantil" al cargar la página
+    window.addEventListener('DOMContentLoaded', () => {
+      mostrarBotones('Reglamento Estudiantil');
+    });
+  </script>
+
 </body>
 </html>
+
 

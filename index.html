@@ -5,15 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AdmiRegBot - UAM</title>
   <link rel="stylesheet" href="estilos.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet" />
 </head>
 <body>
 
-  <!-- Fondo oscuro futurista -->
+  <!-- Fondo oscuro con estilo futurista -->
   <div class="overlay"></div>
 
-  <!-- 💡 Preguntas frecuentes flotando -->
+  <!-- Preguntas frecuentes flotantes estilo holográfico -->
   <div class="floating-help">
     <h4>💡 Preguntas frecuentes</h4>
     <ul>
@@ -26,13 +25,15 @@
       <li><b>🔎 Otros temas:</b> Otros</li>
     </ul>
   </div>
-  <!-- Chatbot -->
+
+  <!-- Contenedor principal del chatbot -->
   <div class="chat-container">
     <div class="chatbot-header">
       <img src="logo-uam.png" alt="Logo UAM" class="logo" />
       <h1>Admisiones y Registro Académico UAM</h1>
     </div>
 
+    <!-- Botones rápidos estilo menú -->
     <div class="menu-buttons">
       <button onclick="quickReply('Matriculas')">📌 Matrícula</button>
       <button onclick="quickReply('homologación de inglés')">📄 Homologación</button>
@@ -42,41 +43,45 @@
       <button onclick="quickReply('certificados')">📥 Certificados</button>
     </div>
 
+    <!-- Ventana del chat -->
     <div class="chat-window" id="chat-box">
       <p>👋 ¡Hola! ¿En qué puedo ayudarte hoy?</p>
     </div>
 
+    <!-- Entrada de usuario -->
     <div class="chat-input-container">
       <input type="text" id="user-input" placeholder="Escribe tu pregunta aquí..." />
       <button onclick="sendMessage()">Enviar</button>
     </div>
   </div>
+
+  <!-- Botón para limpiar historial del chat -->
   <div style="text-align: center; margin-top: 10px;">
     <button onclick="limpiarHistorial()" style="background-color:#ff4d4d; color:white; padding:8px 16px; border:none; border-radius:10px; cursor:pointer;">🧹 Limpiar Chat</button>
   </div>
-  
-  
 
-  <script src="chatbot.js" defer></script>
-<!-- Contenedor para mostrar las guías -->
-<div id="contenedor-guia" class="guia-container oculto">
-  <button class="btn-cerrar-guia" onclick="cerrarGuia()">❌</button>
-  
-  <!-- Agregar iframe para mostrar contenido de la guía -->
-  <iframe id="guia-frame" src="" frameborder="0"></iframe>
-</div>
-<!-- Menú semicircular de guías -->
-<div class="menu-guias">
-  <input type="checkbox" id="toggle-menu" />
-  <label for="toggle-menu" class="menu-icono">📚</label>
-  <div class="menu-items">
-    <button onclick="cargarGuia('Guia-PDF')" title="Condición Académica">🎓</button>
-    <button onclick="cargarGuia('recibo')" title="Recibos">🧾</button>
-    <button onclick="cargarGuia('carnets')" title="Base Carnets">🧬</button>
-    <button onclick="cargarGuia('proceso')" title="Carnetización">🪪</button>
+  <!-- Contenedor de guía interactiva -->
+  <div id="contenedor-guia" class="guia-container oculto">
+    <button class="btn-cerrar-guia" onclick="cerrarGuia()">❌</button>
+    <iframe id="guia-frame" src="" frameborder="0"></iframe>
   </div>
-</div>
-<script src="https://webgrid.autonoma.edu.co/uamvirtual/mod/hvp/library/js/h5p-resizer.js" charset="UTF-8"></script>
-<script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.js"></script>
+
+  <!-- Menú semicircular con acceso a guías H5P -->
+  <div class="menu-guias">
+    <input type="checkbox" id="toggle-menu" />
+    <label for="toggle-menu" class="menu-icono" title="Guías Interactivas">📚</label>
+    <div class="menu-items">
+      <button onclick="cargarGuia('Guia-PDF')" title="Condición Académica">🎓</button>
+      <button onclick="cargarGuia('recibo')" title="Recibos">🧾</button>
+      <button onclick="cargarGuia('carnets')" title="Base Carnets">🧬</button>
+      <button onclick="cargarGuia('proceso')" title="Carnetización">🪪</button>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="chatbot.js" defer></script>
+  <script src="https://webgrid.autonoma.edu.co/uamvirtual/mod/hvp/library/js/h5p-resizer.js" charset="UTF-8"></script>
+  <script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.js"></script>
 </body>
 </html>
+

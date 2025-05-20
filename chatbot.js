@@ -120,7 +120,7 @@ async function getBotResponse(userInput) {
 
     // 2. Búsqueda inteligente con Fuse.js
     const fuse = new Fuse(data, {
-      keys: ['tema'],
+      keys: ['tema', 'categoria', 'subcategoria', 'preguntas', 'respuesta'],
       threshold: 0.4,
       distance: 100,
       includeScore: true,

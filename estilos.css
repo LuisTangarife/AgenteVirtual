@@ -1,0 +1,844 @@
+/* estilos.css */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #0a0f2c;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    padding: 40px;
+  }
+  
+  .chatbot-container {
+    background-color: #1b2141;
+    border-radius: 20px;
+    padding: 30px;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
+  }
+  
+  .chatbot-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .chatbot-header .logo {
+    height: 40px;
+  }
+  
+  .chatbot-header h1 {
+    font-size: 20px;
+    color: #00eaff;
+  }
+  
+  .chat-window {
+    background-color: #11152d;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 20px;
+    min-height: 100px;
+    color: #c0eaff;
+  }
+  
+  .chat-input-container {
+    display: flex;
+    gap: 10px;
+  }
+  
+  input#user-input {
+    flex: 1;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    font-size: 14px;
+  }
+  
+  button {
+    background-color: #00eaff;
+    border: none;
+    color: #0a0f2c;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s ease;
+  }
+  
+  button:hover {
+    background-color: #00c2cc;
+  }
+  .chat-window div {
+    animation: fadeIn 0.4s ease-in;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .menu-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin: 15px 10px;
+  }
+  
+  .menu-buttons button {
+    background-color: #00457c;
+    color: white;
+    border: none;
+    padding: 10px 14px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .menu-buttons button:hover {
+    background-color: #0060b3;
+  }
+  body {
+    background-image: url("fondo-uam.png"); /* o simplemente "image.png" si está en la misma carpeta */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+  }
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* sombra oscura encima de la imagen */
+    z-index: -1;
+  }
+  
+  /* Animación de entrada para el contenedor */
+.chatbot-container {
+  animation: slideIn 1s ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Efecto brillante en el encabezado */
+.chatbot-header h1 {
+  position: relative;
+  overflow: hidden;
+}
+
+.chatbot-header h1::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(120deg, transparent, rgba(0, 255, 255, 0.4), transparent);
+  animation: shine 2.5s infinite;
+}
+
+@keyframes shine {
+  from { left: -100%; }
+  to { left: 100%; }
+}
+
+/* Animación para los botones del menú */
+.menu-buttons button {
+  animation: fadeSlideUp 0.5s ease both;
+}
+
+.menu-buttons button:nth-child(1) { animation-delay: 0.1s; }
+.menu-buttons button:nth-child(2) { animation-delay: 0.2s; }
+.menu-buttons button:nth-child(3) { animation-delay: 0.3s; }
+.menu-buttons button:nth-child(4) { animation-delay: 0.4s; }
+.menu-buttons button:nth-child(5) { animation-delay: 0.5s; }
+.menu-buttons button:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes fadeSlideUp {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Mejora de animación para los mensajes */
+.chat-window div {
+  animation: fadeInUp 0.4s ease-in-out;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+/* === BOT FLOTANDO DESDE PORTAL === */
+#bot-avatar::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  border-radius: 50%;
+  border: 2px solid rgba(0, 255, 255, 0.3);
+  animation: pulseRing 2s infinite;
+}
+
+@keyframes pulseRing {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(1.5); opacity: 0; }
+}
+
+@keyframes floatIn {
+  0% {
+    transform: scale(0) translateY(200px);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes hoverPulse {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* === FONDO REDES NEURONALES === */
+.neural-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: radial-gradient(#0ff2, #0009), url('neural-lines.svg') repeat;
+  background-size: cover;
+  animation: moveNeural 30s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes moveNeural {
+  0% { background-position: 0 0; }
+  100% { background-position: 1000px 1000px; }
+}
+
+/* === BURBUJAS DE PREGUNTA === */
+.question-bubble {
+  background-color: #00f0ff22;
+  border: 1px solid #00f0ff99;
+  padding: 10px 15px;
+  border-radius: 20px;
+  margin: 10px;
+  color: #00f0ff;
+  animation: floatQuestion 5s ease-in-out;
+}
+
+@keyframes floatQuestion {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* === RESPUESTA PROCESADA QUE BRILLA === */
+.answer-glow {
+  background-color: #001122;
+  border: 1px solid #00f0ff99;
+  padding: 15px;
+  margin: 10px;
+  color: #0ff;
+  border-radius: 10px;
+  animation: glowAnswer 1.5s ease-in-out;
+  box-shadow: 0 0 10px #0ff5;
+}
+
+@keyframes glowAnswer {
+  0% {
+    background-color: #000;
+    box-shadow: 0 0 0 transparent;
+    opacity: 0;
+  }
+  100% {
+    background-color: #001122;
+    box-shadow: 0 0 20px #0ff8;
+    opacity: 1;
+  }
+  
+}
+/* ==== MENSAJES DEL USUARIO ==== */
+.user-message {
+  background-color: #00457c;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 15px 15px 0 15px;
+  margin: 8px;
+  max-width: 80%;
+  align-self: flex-end;
+  box-shadow: 0 0 8px rgba(0, 174, 255, 0.3);
+  animation: fadeInUp 0.3s ease-in-out;
+}
+
+/* ==== MENSAJES DEL BOT ==== */
+.bot-message {
+  background-color: #1b2141;
+  color: #00f0ff;
+  padding: 10px 15px;
+  border-radius: 15px 15px 15px 0;
+  margin: 8px;
+  max-width: 80%;
+  align-self: flex-start;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+  animation: fadeInUp 0.3s ease-in-out;
+}
+
+/* Asegura que el contenedor permita alineación */
+.chat-window {
+  display: flex;
+  flex-direction: column;
+}
+/* 📍 Contenedor principal del chat */
+.chat-container {
+  position: absolute;
+  top: 50%;
+  right: 40px;
+  transform: translateY(-50%);
+  width: 400px;
+  max-width: 90%;
+  z-index: 2;
+}
+
+/* 💡 Tips flotantes */
+.floating-help {
+  position: absolute;
+  top: 50%;
+  left: 40px;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.45);
+  border-radius: 16px;
+  padding: 20px;
+  color: #ffffff;
+  font-size: 14px;
+  max-width: 260px;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.25);
+  animation: float 3s ease-in-out infinite;
+}
+
+.floating-help h4 {
+  margin-top: 0;
+  color: #00ffff;
+  font-weight: bold;
+  text-align: center;
+  font-size: 16px;
+}
+
+.floating-help ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.floating-help li {
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+
+/* 💫 Animación flotante */
+@keyframes float {
+  0%, 100% { transform: translateY(-50%) translateX(0); }
+  50% { transform: translateY(-52%) translateX(2px); }
+}
+
+/* === BOT FLOTANDO DESDE PORTAL === */
+#bot-avatar {
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  width: 80px;
+  height: 80px;
+background: radial-gradient(circle at center, #00f0ff, #002244);
+  border-radius: 50%;
+  box-shadow: 0 0 20px #00f0ff;
+  animation: floatIn 2s ease-out, hoverPulse 3s infinite ease-in-out;
+  z-index: 999;
+}
+
+@keyframes floatIn {
+  0% {
+    transform: scale(0) translateY(200px);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes hoverPulse {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* === FONDO REDES NEURONALES === */
+.neural-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: radial-gradient(#0ff2, #0009), url('neural-lines.svg') repeat;
+  background-size: cover;
+  animation: moveNeural 30s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes moveNeural {
+  0% { background-position: 0 0; }
+  100% { background-position: 1000px 1000px; }
+}
+
+/* === BURBUJAS DE PREGUNTA === */
+.question-bubble {
+  background-color: #00f0ff22;
+  border: 1px solid #00f0ff99;
+  padding: 10px 15px;
+  border-radius: 20px;
+  margin: 10px;
+  color: #00f0ff;
+  animation: floatQuestion 5s ease-in-out;
+}
+
+@keyframes floatQuestion {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* === RESPUESTA PROCESADA QUE BRILLA === */
+.answer-glow {
+  background-color: #001122;
+  border: 1px solid #00f0ff99;
+  padding: 15px;
+  margin: 10px;
+  color: #0ff;
+  border-radius: 10px;
+  animation: glowAnswer 1.5s ease-in-out;
+  box-shadow: 0 0 10px #0ff5;
+}
+
+@keyframes glowAnswer {
+  0% {
+    background-color: #000;
+    box-shadow: 0 0 0 transparent;
+    opacity: 0;
+  }
+  100% {
+    background-color: #001122;
+    box-shadow: 0 0 20px #0ff8;
+    opacity: 1;
+  }
+}
+.chat-window {
+  background-color: #11152d;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 20px;
+  color: #c0eaff;
+
+  /* ✅ Tamaño fijo con scroll */
+  height: 400px;             /* o el tamaño que prefieras */
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  scroll-behavior: smooth;
+}
+.user-message, .bot-message {
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  max-width: 90%;
+}
+
+.bot-message {
+  display: flex;
+  align-items: flex-start;
+  background: linear-gradient(145deg, rgba(0, 10, 30, 0.85), rgba(0, 30, 60, 0.7));
+  border: 1px solid rgba(0, 255, 255, 0.2);
+  border-radius: 16px;
+  padding: 12px 16px;
+  margin: 10px 0;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 15px;
+  color: #e6faff;
+  align-self: flex-start;
+  box-shadow:
+    0 0 10px rgba(0, 255, 255, 0.08),
+    0 0 25px rgba(0, 255, 255, 0.1);
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  animation: entradaSuave 0.4s ease-in;
+  gap: 10px;
+}
+
+@keyframes entradaSuave {
+  0% {
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Para la bienvenida estructurada */
+.mensaje-bienvenida h3 {
+  margin-top: 0;
+  color: #00e5ff;
+  font-weight: bold;
+  text-shadow: 0 0 3px cyan;
+}
+
+.mensaje-bienvenida ul {
+  list-style-type: none;
+  padding-left: 0;
+  margin: 10px 0;
+}
+
+.mensaje-bienvenida li {
+  margin-bottom: 4px; /* antes 6px */
+  line-height: 1.3;   /* más compacto */
+  color: #aeefff;
+}
+
+
+.mensaje-bienvenida p {
+  margin: 6px 0; /* antes 10px o 5px */
+  line-height: 1.4;
+}
+
+@media screen and (max-width: 600px) {
+  .chatbot-container {
+    padding: 20px;
+    margin: 10px;
+  }
+
+  .menu-buttons {
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+@media screen and (max-width: 600px) {
+  body {
+    padding: 10px;
+    justify-content: flex-start;
+  }
+
+  .chat-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    transform: none;
+    width: 100%;
+    max-width: 100%;
+    padding: 10px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(10, 15, 44, 0.95); /* fondo oscuro con transparencia */
+    backdrop-filter: blur(5px);
+  }
+
+  .chatbot-container {
+    padding: 10px;
+    margin: 0;
+    border-radius: 12px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .chat-window {
+    flex: 1;
+    overflow-y: auto;
+    height: auto;
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .chat-input-container {
+    display: flex;
+    gap: 8px;
+    flex-direction: row;
+    margin-top: auto;
+    padding: 8px 0;
+  }
+
+  input#user-input {
+    flex: 1;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    font-size: 14px;
+  }
+
+  button {
+    padding: 10px 15px;
+    font-size: 14px;
+  }
+
+  .bot-message, .user-message {
+    max-width: 100%;
+    font-size: 14px;
+    padding: 10px 14px;
+  }
+
+  .floating-help,
+  .menu-buttons {
+    display: none !important; /* Oculta elementos flotantes */
+  }
+
+  #bot-avatar {
+    display: none;
+  }
+}
+/* 🌌 Contenedor de la guía */
+#contenedor-guia {
+  position: fixed;
+  top: 5%;
+  left: 5%;
+  width: 90%;
+  height: 90%;
+  background: white;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  border-radius: 12px;
+  z-index: 9999;
+  display: none;
+  padding: 10px;
+  overflow: hidden; /* Impide que el contenedor se desborde */
+}
+
+/* 👁️ Hacer que el iframe ocupe todo el espacio del contenedor */
+#guia-frame {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 8px;
+  display: block; /* Asegura que el iframe ocupe toda la anchura disponible */
+  overflow: auto; /* Esto habilita el desplazamiento dentro del iframe */
+}
+
+/* ❌ Botón de cerrar guía */
+.btn-cerrar-guia {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background-color: #ff3b3b;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  font-size: 18px;
+  cursor: pointer;
+  z-index: 10000;
+}
+.oculto {
+  display: none;
+}
+
+
+/* 📚 Menú semicircular */
+.menu-guias {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 999;
+}
+
+/* Ocultar checkbox */
+.menu-guias input[type="checkbox"] {
+  display: none;
+}
+
+/* Botón principal */
+.menu-icono {
+  background: #00ffd5;
+  color: #000;
+  font-size: 24px;
+  padding: 12px;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 10px #00ffd5;
+  transition: transform 0.3s ease;
+  display: inline-block;
+}
+
+/* Hover */
+.menu-icono:hover {
+  transform: scale(1.2);
+}
+
+/* Menú oculto por defecto */
+.menu-items {
+  position: absolute;
+  bottom: 50px;
+  left: 0;
+  transform: rotate(-90deg);
+  transform-origin: bottom left;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.5s ease;
+}
+
+/* Botones internos */
+.menu-items button {
+  display: block;
+  margin: 10px;
+  background: #0ff;
+  border: none;
+  border-radius: 50%;
+  padding: 15px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: transform 0.3s, background 0.3s;
+}
+.menu-items button:hover {
+  transform: scale(1.2);
+  background: #0cf;
+}
+
+/* 🔓 Mostrar menú cuando el checkbox está activado */
+.menu-guias input[type="checkbox"]:checked ~ .menu-items {
+  opacity: 1;
+  pointer-events: auto;
+  transform: rotate(0deg);
+}
+/* ❌ Botón de cerrar guía */
+.btn-cerrar-guia {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #ff4d4d;
+  color: #fff;
+  border: none;
+  font-size: 20px;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(255, 77, 77, 0.5);
+  z-index: 1000;
+  transition: transform 0.3s ease;
+}
+
+.btn-cerrar-guia:hover {
+  transform: scale(1.2);
+  background: #ff1a1a;
+}
+.guia-container {
+  transition: opacity 0.3s ease;
+  opacity: 1;
+}
+
+.guia-container.oculto {
+  opacity: 0;
+  pointer-events: none;
+}
+.guia-container iframe {
+  min-height: 90vh !important;
+  height: 100% !important;
+}
+.quick-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.boton-rapido {
+  background-color: #0a84ff;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.boton-rapido:hover {
+  background-color: #005fcc;
+}
+.spinner {
+  margin: 16px auto;
+  width: 40px;
+  height: 40px;
+  border: 5px solid #ccc;
+  border-top: 5px solid #4CAF50;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.chat-container {
+  animation: fadeInUp 0.7s ease;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

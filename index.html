@@ -1,121 +1,69 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>ChatBot RPG</title>
-    <link rel="stylesheet" href="style.css">
-    <style>
-        body {
-            font-family: "Segoe UI", sans-serif;
-            background-color: #1e1e2f;
-            color: white;
-            margin: 0;
-            padding: 0;
-        }
-
-        #menu-categorias {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            padding: 20px;
-            justify-content: center;
-            background-color: #2e2e40;
-            border-bottom: 2px solid #444;
-        }
-
-        .categoria {
-            background-color: #444;
-            padding: 10px 15px;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .categoria:hover {
-            background-color: #666;
-        }
-
-        #preguntas {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            justify-content: center;
-            padding: 10px 20px;
-        }
-
-        .pregunta-btn {
-            background-color: #333;
-            padding: 8px 12px;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .pregunta-btn:hover {
-            background-color: #555;
-        }
-
-        #chat {
-            padding: 20px;
-            max-width: 800px;
-            margin: auto;
-            min-height: 300px;
-        }
-
-        .mensaje {
-            margin-bottom: 15px;
-        }
-
-        .usuario {
-            font-weight: bold;
-            color: #7cd1ff;
-        }
-
-        .bot {
-            color: #90ee90;
-        }
-
-        #input-container {
-            display: flex;
-            justify-content: center;
-            padding: 10px 20px;
-            gap: 10px;
-        }
-
-        #input {
-            width: 300px;
-            padding: 8px;
-            border-radius: 5px;
-            border: none;
-        }
-
-        #enviar {
-            padding: 8px 15px;
-            border: none;
-            background-color: #28a745;
-            color: white;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        #enviar:hover {
-            background-color: #218838;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ChatBot Interactivo</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; background: #f2f2f2; }
+    #chat { border: 1px solid #ccc; padding: 10px; height: 300px; overflow-y: scroll; background: #fff; }
+    .mensaje { margin: 5px 0; }
+    .bot { color: blue; }
+    .usuario { color: green; }
+  </style>
 </head>
 <body>
-    <h1 style="text-align:center; padding-top: 10px;">🤖 ChatBot RPG</h1>
+  <h2>ChatBot de Juego</h2>
+  <div id="chat"></div>
+  <input type="text" id="input" placeholder="Escribe tu mensaje aquí..." />
+  <button onclick="enviarMensaje()">Enviar</button>
 
-    <div id="menu-categorias"></div>
-    <div id="preguntas"></div>
+  <script>
+    const baseConocimiento = [
+      {
+        categoria: "Combate",
+        pregunta: "¿Cómo peleo contra un dragón?",
+        respuesta: "Debes usar tu espada mágica y evitar su aliento de fuego. ¡Recuerda tener pociones listas!"
+      },
+      {
+        categoria: "Exploración",
+        pregunta: "¿Dónde encuentro la llave del castillo?",
+        respuesta: "La llave está escondida en la cueva del bosque oscuro, custodiada por duendes."
+      },
+      {
+        categoria: "Magia",
+        pregunta: "¿Cómo aprendo un nuevo hechizo?",
+        respuesta: "Necesitas encontrar un grimorio antiguo y estudiar durante la luna llena."
+      }
+    ];
 
-    <div id="chat"></div>
+    function agregarMensaje(texto, clase) {
+      const chat = document.getElementById("chat");
+      const mensaje = document.createElement("div");
+      mensaje.className = "mensaje " + clase;
+      mensaje.textContent = texto;
+      chat.appendChild(mensaje);
+      chat.scrollTop = chat.scrollHeight;
+    }
 
-    <div id="input-container">
-        <input type="text" id="input" placeholder="Escribe tu pregunta...">
-        <button id="enviar">Enviar</button>
-    </div>
+    function enviarMensaje() {
+      const input = document.getElementById("input");
+      const texto = input.value.trim();
+      if (texto === "") return;
+      agregarMensaje("Tú: " + texto, "usuario");
 
-    <script src="script.js"></script>
+      const resultado = baseConocimiento.find(entry =>
+        texto.toLowerCase().includes(entry.pregunta.toLowerCase())
+      );
+
+      if (resultado) {
+        agregarMensaje("Bot: " + resultado.respuesta, "bot");
+      } else {
+        agregarMensaje("Bot: Lo siento, no sé la respuesta a eso todavía.", "bot");
+      }
+
+      input.value = "";
+    }
+  </script>
 </body>
 </html>

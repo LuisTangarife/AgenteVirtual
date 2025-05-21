@@ -44,6 +44,12 @@ function sendMessage() {
   appendMessage(texto, "user");
   input.value = "";
 
+  function limpiarHistorial() {
+  const chatBox = document.getElementById('chat-box');
+  chatBox.innerHTML = '<div class="bot-message">🧠 Historial borrado. ¿En qué más puedo ayudarte?</div>';
+  document.getElementById('botones-dinamicos').innerHTML = '';
+}
+
   // Buscar coincidencia en el JSON
   const tema = datos.find(d =>
     d.tema.toLowerCase() === texto.toLowerCase() ||

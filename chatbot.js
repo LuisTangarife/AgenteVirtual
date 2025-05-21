@@ -1,4 +1,4 @@
-let vozActiva = true;
+let vozActiva = false;
 
 // Reproduce la respuesta del bot en voz alta
 function hablar(texto) {

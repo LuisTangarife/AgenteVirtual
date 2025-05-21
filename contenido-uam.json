@@ -1,14 +1,14 @@
 [
   {
     "tema": "Reglamento Estudiantil",
-    "categoria": "Reglamento Estudiantil",
-    "subcategoria": "General",
+    "descripcion": "Consulta el reglamento que rige la vida académica en la Universidad Autónoma de Manizales.",
+    "tags": ["reglamento", "normas", "estudiantes"],
     "preguntas": [
       "¿Dónde puedo consultar el reglamento estudiantil?",
       "¿Cuál es el reglamento general para estudiantes?",
       "Necesito información sobre el reglamento estudiantil"
     ],
-    "respuesta": "Puedes consultar el Reglamento General Estudiantil de la Universidad Autónoma de Manizales. Este documento establece las normas y procedimientos que rigen la vida académica de los estudiantes.",
+    "respuesta": "📘 Puedes consultar el Reglamento General Estudiantil en el siguiente enlace. Este documento contiene las normas, derechos y deberes del estudiante UAM.",
     "enlaces": [
       {
         "titulo": "Reglamento General Estudiantil",
@@ -17,7 +17,7 @@
     ],
     "botones": [
       {
-        "texto": "Ver Reglamento",
+        "texto": "📘 Ver Reglamento",
         "accion": "enlace",
         "destino": "https://www.autonoma.edu.co/images/documentos/Reglamento_General_Estudiantil.pdf"
       },
@@ -29,44 +29,39 @@
     ]
   },
   {
-    "tema": "Programas Académicos",
-    "categoria": "Programas Académicos",
-    "subcategoria": "Ingeniería Industrial",
+    "tema": "Pensum",
+    "descripcion": "Encuentra el plan de estudios de los programas académicos.",
+    "tags": ["pensum", "plan de estudios", "materias"],
     "preguntas": [
       "¿Cuál es el pensum de Ingeniería Industrial?",
-      "Necesito el plan de estudios de Ingeniería Industrial",
-      "¿Qué materias se ven en Ingeniería Industrial?"
+      "¿Qué materias tiene Medicina?",
+      "Plan de estudios de Psicología"
     ],
-    "respuesta": "El programa de Ingeniería Industrial está diseñado para formar profesionales capaces de optimizar procesos y mejorar la eficiencia empresarial. Consulta el pensum completo aquí:",
+    "respuesta": "📚 Cada programa académico tiene su propio pensum. Puedes consultar los planes de estudio en el sitio web oficial.",
     "enlaces": [
       {
-        "titulo": "Pensum Ingeniería Industrial",
-        "url": "https://www.autonoma.edu.co/oferta-academica/pregrados/ingenieria-industrial"
+        "titulo": "Oferta Académica - Pregrados",
+        "url": "https://www.autonoma.edu.co/oferta-academica/pregrados"
       }
     ],
     "botones": [
       {
-        "texto": "Ver Pensum",
+        "texto": "Ir a Oferta Académica",
         "accion": "enlace",
-        "destino": "https://www.autonoma.edu.co/oferta-academica/pregrados/ingenieria-industrial"
-      },
-      {
-        "texto": "Consultar Derechos Pecuniarios",
-        "accion": "pregunta",
-        "destino": "¿Cuáles son los derechos pecuniarios para 2025?"
+        "destino": "https://www.autonoma.edu.co/oferta-academica/pregrados"
       }
     ]
   },
   {
     "tema": "Derechos Pecuniarios",
-    "categoria": "Derechos Pecuniarios",
-    "subcategoria": "2025",
+    "descripcion": "Conoce los costos de matrícula, certificados, validaciones, entre otros servicios académicos.",
+    "tags": ["costos", "matrícula", "certificados", "tarifas"],
     "preguntas": [
       "¿Cuáles son los derechos pecuniarios para 2025?",
-      "Información sobre costos académicos",
-      "¿Dónde puedo ver los derechos pecuniarios actuales?"
+      "Costos de matrícula UAM",
+      "Precios de certificados en la UAM"
     ],
-    "respuesta": "Los derechos pecuniarios para el año 2025 incluyen costos de matrícula, certificados, validaciones y más. Puedes consultarlos aquí:",
+    "respuesta": "💰 Puedes consultar los Derechos Pecuniarios de la UAM para el año 2025 en el siguiente enlace:",
     "enlaces": [
       {
         "titulo": "Derechos Pecuniarios 2025",
@@ -88,14 +83,14 @@
   },
   {
     "tema": "Trámites Académicos",
-    "categoria": "Trámites Académicos",
-    "subcategoria": "Solicitudes",
+    "descripcion": "Aprende a realizar solicitudes académicas como cancelaciones, certificados y validaciones.",
+    "tags": ["solicitud", "cancelación", "certificado", "plataforma"],
     "preguntas": [
       "¿Cómo hago una solicitud académica?",
       "¿Dónde puedo hacer trámites estudiantiles?",
-      "Quiero saber cómo enviar una solicitud"
+      "¿Cómo solicitar un certificado?"
     ],
-    "respuesta": "Para realizar solicitudes académicas debes ingresar a la plataforma institucional. Allí puedes encontrar trámites como cancelaciones, validaciones, certificaciones, entre otros.",
+    "respuesta": "📄 Para realizar trámites académicos como certificados o cancelaciones, debes ingresar a la plataforma institucional UAM Virtual.",
     "enlaces": [
       {
         "titulo": "Plataforma de Solicitudes UAM",
@@ -112,35 +107,6 @@
         "texto": "Ver Guía de Solicitudes",
         "accion": "pregunta",
         "destino": "¿Cómo hacer una solicitud de cancelación?"
-      }
-    ]
-  },
-  {
-    "tema": "Admisiones",
-    "categoria": "Admisiones",
-    "subcategoria": "Inscripción",
-    "preguntas": [
-      "¿Cómo me inscribo en un programa?",
-      "Pasos para inscribirse en la UAM",
-      "Quiero estudiar en la Autónoma, ¿qué hago?"
-    ],
-    "respuesta": "Puedes inscribirte a cualquier programa académico accediendo al formulario de inscripción de la UAM. Allí encontrarás las instrucciones paso a paso.",
-    "enlaces": [
-      {
-        "titulo": "Formulario de Inscripción",
-        "url": "https://www.autonoma.edu.co/inscripciones"
-      }
-    ],
-    "botones": [
-      {
-        "texto": "Inscribirme Ahora",
-        "accion": "enlace",
-        "destino": "https://www.autonoma.edu.co/inscripciones"
-      },
-      {
-        "texto": "Ver Programas Académicos",
-        "accion": "pregunta",
-        "destino": "¿Qué programas ofrece la UAM?"
       }
     ]
   }

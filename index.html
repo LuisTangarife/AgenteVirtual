@@ -5,186 +5,140 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AdmiRegBot - UAM</title>
   <link rel="stylesheet" href="estilos.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Roboto&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background: radial-gradient(#0e1e3d, #000000);
+      color: #ffffff;
+      overflow-x: hidden;
+    }
+
+    .chat-container {
+      max-width: 700px;
+      margin: 50px auto;
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 0 25px #00e0ff60;
+    }
+
+    .chatbot-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 1px solid #00e0ff;
+      padding-bottom: 10px;
+      margin-bottom: 10px;
+    }
+
+    .chatbot-header .logo {
+      width: 60px;
+    }
+
+    .chatbot-header h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.5rem;
+      margin: 0;
+    }
+
+    .chat-window {
+      min-height: 250px;
+      max-height: 400px;
+      overflow-y: auto;
+      padding-right: 10px;
+    }
+
+    .chat-input-container {
+      display: flex;
+      margin-top: 10px;
+    }
+
+    #user-input {
+      flex: 1;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      font-size: 16px;
+    }
+
+    .chat-input-container button {
+      margin-left: 10px;
+      padding: 10px 20px;
+      background-color: #00bcd4;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .boton-guia, .boton-audio {
+      background: #1f8ef1;
+      border: none;
+      color: white;
+      padding: 10px 14px;
+      margin: 5px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .user-message, .bot-message {
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+
+    .user-message {
+      text-align: right;
+      color: #00e0ff;
+    }
+
+    .bot-message {
+      text-align: left;
+      color: #ffffff;
+    }
+
+    #botones-dinamicos button {
+      margin: 5px;
+      background: #00bcd4;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 8px;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
 
-  <!-- Fondo oscuro con estilo futurista -->
-  <div class="overlay"></div>
-
-  <!-- Preguntas frecuentes flotantes estilo holográfico -->
-  <div class="floating-help">
-    <h4>💡 Preguntas frecuentes</h4>
-    <ul>
-      <li><b>📚 Créditos:</b> Solicitud de créditos por promedio</li>
-      <li><b>🧾 Doble carrera:</b> Distribución de créditos de doble carrera</li>
-      <li><b>📄 Créditos adicionales:</b> Solicitud de recibo para créditos adicionales</li>
-      <li><b>📄 Homologación:</b> Solicitud de recibo para homologación</li>
-      <li><b>💵 Corrección de recibos:</b> Corrección del recibo de matrícula</li>
-      <li><b>📝 Solicitud de recibos:</b> Solicitud de recibo de matrícula</li>
-      <li><b>🔎 Otros temas:</b> Otros</li>
-    </ul>
-  </div>
-
-  <!-- Contenedor principal del chatbot -->
   <div class="chat-container">
     <div class="chatbot-header">
       <img src="logo-uam.png" alt="Logo UAM" class="logo" />
-      <h1>Admisiones y Registro Académico UAM</h1>
+      <h1>AdmiRegBot</h1>
     </div>
 
-    <!-- Botones rápidos estilo menú -->
-    <div class="menu-buttons">
-      <button onclick="quickReply('Matriculas')">📌 Matrícula</button>
-      <button onclick="quickReply('homologación de inglés')">📄 Homologación</button>
-      <button onclick="quickReply('validación inglés')">✅ Validación de inglés</button>
-      <button onclick="quickReply('cancelar materia')">🚫 Cancelar materia</button>
-      <button onclick="quickReply('reglamento estudiantil')">📘 Reglamento</button>
-      <button onclick="quickReply('certificados')">📥 Certificados</button>
-    </div>
-
-    <!-- Ventana del chat -->
     <div class="chat-window" id="chat-box">
-      <p>👋 ¡Hola! ¿En qué puedo ayudarte hoy?</p>
+      <div class="bot-message">👋 ¡Hola! ¿En qué puedo ayudarte hoy?</div>
     </div>
 
-    <!-- Contenedor para botones dinámicos -->
-    <div id="botones-dinamicos" style="margin-top: 15px;"></div>
+    <div id="botones-dinamicos"></div>
 
-    <!-- Entrada de usuario -->
     <div class="chat-input-container">
       <input type="text" id="user-input" placeholder="Escribe tu pregunta aquí..." />
       <button onclick="sendMessage()">Enviar</button>
     </div>
-  </div>
 
-  <!-- Botón para limpiar historial del chat -->
-  <div style="text-align: center; margin-top: 10px;">
-    <button onclick="limpiarHistorial()" style="background-color:#ff4d4d; color:white; padding:8px 16px; border:none; border-radius:10px; cursor:pointer;">🧹 Limpiar Chat</button>
-  </div>
-
-  <!-- Contenedor de guía interactiva -->
-  <div id="contenedor-guia" class="guia-container oculto">
-    <button class="btn-cerrar-guia" onclick="cerrarGuia()">❌</button>
-    <iframe id="guia-frame" src="" frameborder="0"></iframe>
-  </div>
-
-  <!-- Menú semicircular con acceso a guías H5P -->
-  <div class="menu-guias">
-    <input type="checkbox" id="toggle-menu" />
-    <label for="toggle-menu" class="menu-icono" title="Guías Interactivas">📚</label>
-    <div class="menu-items">
-      <button onclick="cargarGuia('Guia-PDF')" title="Condición Académica">🎓</button>
-      <button onclick="cargarGuia('recibo')" title="Recibos">🧾</button>
-      <button onclick="cargarGuia('carnets')" title="Base Carnets">🧬</button>
-      <button onclick="cargarGuia('proceso')" title="Carnetización">🪪</button>
+    <div style="margin-top: 10px; text-align: center;">
+      <button class="boton-guia" onclick="mostrarBotones('Reglamento Estudiantil')">📘 Reglamento</button>
+      <button class="boton-guia" onclick="mostrarBotones('Pensum')">📚 Pensum</button>
+      <button class="boton-guia" onclick="mostrarBotones('Trámites')">🧾 Trámites</button>
+      <button class="boton-guia" onclick="mostrarBotones('Derechos Pecuniarios')">💰 Derechos</button>
+      <button class="boton-audio" onclick="toggleVoz()">🎙️ Voz</button>
     </div>
   </div>
 
-  <!-- Scripts -->
-  <script src="chatbot.js" defer></script>
-  <script src="https://webgrid.autonoma.edu.co/uamvirtual/mod/hvp/library/js/h5p-resizer.js" charset="UTF-8"></script>
-  <script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.js"></script>
-
-  <script>
-    // Ejemplo JSON con un solo tema (puedes expandir a todo el JSON que tengas)
-    const datos = [
-      {
-        "tema": "Reglamento Estudiantil",
-        "categoria": "Reglamento Estudiantil",
-        "subcategoria": "General",
-        "preguntas": [
-          "¿Dónde puedo consultar el reglamento estudiantil?",
-          "¿Cuál es el reglamento general para estudiantes?",
-          "Necesito información sobre el reglamento estudiantil"
-        ],
-        "respuesta": "Puedes consultar el Reglamento General Estudiantil de la Universidad Autónoma de Manizales. Este documento establece las normas y procedimientos que rigen la vida académica de los estudiantes.",
-        "enlaces": [
-          {
-            "titulo": "Reglamento General Estudiantil",
-            "url": "https://www.autonoma.edu.co/images/documentos/Reglamento_General_Estudiantil.pdf"
-          }
-        ],
-        "botones": [
-          {
-            "texto": "Ver Reglamento",
-            "accion": "enlace",
-            "destino": "https://www.autonoma.edu.co/images/documentos/Reglamento_General_Estudiantil.pdf"
-          },
-          {
-            "texto": "Consultar Pensum",
-            "accion": "pregunta",
-            "destino": "¿Cuál es el pensum del programa de Ingeniería Industrial?"
-          }
-        ]
-      }
-    ];
-
-    // Función para mostrar botones dinámicos de un tema específico
-    function mostrarBotones(tema) {
-      const contenedor = document.getElementById('botones-dinamicos');
-      contenedor.innerHTML = ''; // Limpiar contenido previo
-
-      // Buscar el tema en datos
-      const temaData = datos.find(item => item.tema.toLowerCase() === tema.toLowerCase());
-      if (!temaData || !temaData.botones) return;
-
-      temaData.botones.forEach(boton => {
-        const btn = document.createElement('button');
-        btn.textContent = boton.texto;
-        btn.style.marginRight = '10px';
-        btn.style.padding = '8px 15px';
-        btn.style.borderRadius = '6px';
-        btn.style.border = 'none';
-        btn.style.cursor = 'pointer';
-        btn.style.backgroundColor = '#0078d7';
-        btn.style.color = 'white';
-        btn.title = boton.texto;
-
-        // Acción según tipo
-        btn.onclick = () => {
-          if (boton.accion === 'enlace') {
-            window.open(boton.destino, '_blank');
-          } else if (boton.accion === 'pregunta') {
-            // Aquí puedes manejar la acción de pregunta, por ejemplo mostrar en el chat la pregunta
-            agregarMensajeUsuario(boton.destino);
-            // Simular respuesta automática o búsqueda
-            setTimeout(() => {
-              agregarMensajeBot("Buscando información para: " + boton.destino);
-              // Aquí iría tu función de búsqueda o respuesta real
-            }, 500);
-          }
-        };
-
-        contenedor.appendChild(btn);
-      });
-    }
-
-    // Funciones ejemplo para agregar mensajes al chat (puedes adaptar al sistema real)
-    function agregarMensajeUsuario(texto) {
-      const chatBox = document.getElementById('chat-box');
-      const p = document.createElement('p');
-      p.textContent = 'Tú: ' + texto;
-      p.style.fontWeight = 'bold';
-      chatBox.appendChild(p);
-      chatBox.scrollTop = chatBox.scrollHeight;
-    }
-
-    function agregarMensajeBot(texto) {
-      const chatBox = document.getElementById('chat-box');
-      const p = document.createElement('p');
-      p.textContent = 'Bot: ' + texto;
-      chatBox.appendChild(p);
-      chatBox.scrollTop = chatBox.scrollHeight;
-    }
-
-    // Ejemplo: Mostrar botones para el tema "Reglamento Estudiantil" al cargar la página
-    window.addEventListener('DOMContentLoaded', () => {
-      mostrarBotones('Reglamento Estudiantil');
-    });
-  </script>
-
+  <script src="chatbot.js"></script>
 </body>
 </html>
-
-

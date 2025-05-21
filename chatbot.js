@@ -47,7 +47,6 @@ function sendMessage() {
 
   appendMessage(texto, "user");
   input.value = "";
-}
 
   // Buscar coincidencia en el JSON
   const tema = datos.find(d =>

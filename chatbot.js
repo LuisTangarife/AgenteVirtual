@@ -34,7 +34,11 @@ function appendMessage(text, sender) {
     hablar(text);
   }
 }
-
+  function limpiarHistorial() {
+  const chatBox = document.getElementById('chat-box');
+  chatBox.innerHTML = '<div class="bot-message">🧠 Historial borrado. ¿En qué más puedo ayudarte?</div>';
+  document.getElementById('botones-dinamicos').innerHTML = '';
+}
 // Simula una respuesta y muestra botones si hay coincidencia en el JSON
 function sendMessage() {
   const input = document.getElementById("user-input");
@@ -43,11 +47,6 @@ function sendMessage() {
 
   appendMessage(texto, "user");
   input.value = "";
-}
-  function limpiarHistorial() {
-  const chatBox = document.getElementById('chat-box');
-  chatBox.innerHTML = '<div class="bot-message">🧠 Historial borrado. ¿En qué más puedo ayudarte?</div>';
-  document.getElementById('botones-dinamicos').innerHTML = '';
 }
 
   // Buscar coincidencia en el JSON

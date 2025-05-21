@@ -71,7 +71,10 @@ function mostrarBotones(tema) {
   contenedor.innerHTML = "";
 
   const temaData = datos.find(d => d.tema.toLowerCase() === tema.toLowerCase());
-  if (!temaData || !temaData.botones) return;
+  if (!temaData || !temaData.botones) {
+    contenedor.classList.remove("mostrar");
+    return;
+  }
 
   temaData.botones.forEach(btn => {
     const b = document.createElement("button");
@@ -86,6 +89,9 @@ function mostrarBotones(tema) {
     };
     contenedor.appendChild(b);
   });
+
+  // Activar animación para mostrar botones
+  setTimeout(() => contenedor.classList.add("mostrar"), 100);
 }
 
 // Alternar voz activada/desactivada

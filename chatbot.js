@@ -125,12 +125,12 @@ function sendMessage() {
     (d.tags || []).some(tag => textoNormalizado.includes(normalizarTexto(tag)))
   );
 
-  if (!tema && fuseTemas) {
-    const resultadoTemas = fuseTemas.search(texto);
-    if (resultadoTemas.length > 0) {
-      tema = resultadoTemas[0].item;
-    }
+  if (!tema && typeof fuseTemas !== "undefined" && fuseTemas) {
+  const resultadoTemas = fuseTemas.search(texto);
+  if (resultadoTemas.length > 0) {
+    tema = resultadoTemas[0].item;
   }
+}
 
   if (tema) {
     appendMessage(`<strong>${tema.tema}</strong><br>${tema.respuesta}`, "bot");
@@ -155,14 +155,16 @@ function sendMessage() {
   }
 
   // Búsqueda difusa en preguntas frecuentes
-  if (fuse) {
-    const resultados = fuse.search(texto);
-    if (resultados.length > 0) {
-      const { pregunta, respuesta } = resultados[0].item;
+ if (fuse) {
+  const resultados = fuse.search(texto);
+  if (resultados.length > 0) {
+    const { pregunta, respuesta } = resultados[0].item;
+    if (pregunta && respuesta) {
       appendMessage(`<strong>${pregunta}</strong><br>${respuesta}`, "bot");
       return;
     }
   }
+}
 
   // Si no hay coincidencias en ningún caso, muestra mensaje de error
   appendMessage("🤖 Lo siento, no encontré información sobre eso. Prueba con otra pregunta o usa los botones de guía.", "bot");

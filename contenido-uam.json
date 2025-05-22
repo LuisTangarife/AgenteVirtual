@@ -109,5 +109,126 @@
         "destino": "¿Cómo hacer una solicitud de cancelación?"
       }
     ]
+  },
+  {
+    "tema": "Homologación y Validación de Inglés",
+    "descripcion": "Información sobre cómo acreditar o validar tu nivel de inglés en la UAM.",
+    "tags": ["homologación", "validación", "inglés", "idiomas", "certificación"],
+    "preguntas": [
+      "¿Cómo puedo homologar inglés en la UAM?",
+      "¿Qué necesito para validar mi nivel de inglés?",
+      "¿Puedo presentar el TOEFL en la universidad?",
+      "¿Cuántas veces se puede validar inglés por semestre?",
+      "¿Qué nota necesito para aprobar la validación de inglés?",
+      "¿Dónde encuentro información sobre homologación de idiomas?"
+    ],
+    "respuesta": "📘 En la UAM, puedes homologar tu nivel de inglés presentando certificados internacionales como el TOEFL. Además, se realizan exámenes de validación tres veces por semestre, permitiéndote adelantar hasta tres niveles si obtienes una calificación igual o superior a 4.0. Ten en cuenta que no es posible validar un nivel que ya hayas reprobado.",
+    "enlaces": [
+      {
+        "titulo": "Homologaciones y Validaciones - Instituto de Idiomas",
+        "url": "https://www.autonoma.edu.co/instituto-de-idiomas/homologaciones-y-validaciones"
+      },
+      {
+        "titulo": "Examen TOEFL iBT en la UAM",
+        "url": "https://www.autonoma.edu.co/instituto-de-idiomas/toefl"
+      }
+    ],
+    "botones": [
+      {
+        "texto": "Ver información de homologación",
+        "accion": "enlace",
+        "destino": "https://www.autonoma.edu.co/instituto-de-idiomas/homologaciones-y-validaciones"
+      },
+      {
+        "texto": "Consultar sobre el TOEFL",
+        "accion": "enlace",
+        "destino": "https://www.autonoma.edu.co/instituto-de-idiomas/toefl"
+      }
+    ]
+  },
+  {
+    "tema": "Generación de Carné Estudiantil",
+    "descripcion": "Proceso para obtener el carné estudiantil en la UAM.",
+    "tags": ["carné", "identificación", "estudiante", "foto", "documento"],
+    "preguntas": [
+      "¿Cómo obtengo mi carné estudiantil?",
+      "¿Dónde se toma la foto para el carné?",
+      "¿Es necesario llevar una foto para el carné?",
+      "¿Cuándo entregan el carné universitario?",
+      "¿Dónde recojo mi carné de estudiante?",
+      "¿Qué debo hacer para solicitar el carné?"
+    ],
+    "respuesta": "🪪 Para obtener tu carné estudiantil en la UAM, no necesitas proporcionar una fotografía previamente. La foto se captura o actualiza en el momento de realizar la solicitud en los puntos autorizados.",
+    "enlaces": [
+      {
+        "titulo": "Información sobre el carné estudiantil",
+        "url": "https://www.autonoma.edu.co/"
+      }
+    ],
+    "botones": [
+      {
+        "texto": "Solicitar carné estudiantil",
+        "accion": "enlace",
+        "destino": "https://www.autonoma.edu.co/"
+      }
+    ]
+  },
+  {
+    "tema": "Horario de Clases",
+    "descripcion": "Consulta los horarios de clases y el calendario académico en la UAM.",
+    "tags": ["horario", "clases", "calendario", "académico", "materias"],
+    "preguntas": [
+      "¿Cuándo inician las clases en la UAM?",
+      "¿Dónde puedo ver mi horario de clases?",
+      "¿Cuál es el calendario académico de este semestre?",
+      "¿Cómo consulto los horarios de mis materias?",
+      "¿Dónde encuentro el calendario académico 2025?",
+      "¿Qué días tengo clases este semestre?"
+    ],
+    "respuesta": "📅 Puedes consultar el calendario académico y los horarios de clases en la sección correspondiente del sitio web de la UAM. Allí encontrarás información detallada sobre las fechas importantes del semestre.",
+    "enlaces": [
+      {
+        "titulo": "Calendario Académico 2025",
+        "url": "https://www.autonoma.edu.co/sites/default/files/2024-11/calendario-academico-2025.pdf"
+      }
+    ],
+    "botones": [
+      {
+        "texto": "Ver calendario académico",
+        "accion": "enlace",
+        "destino": "https://www.autonoma.edu.co/sites/default/files/2024-11/calendario-academico-2025.pdf"
+      }
+    ]
+  },
+  {
+    "tema": "Exámenes y Evaluaciones",
+    "descripcion": "Información sobre fechas, tipos y requisitos para exámenes en la UAM.",
+    "tags": ["exámenes", "evaluaciones", "fechas", "requisitos", "universidad"],
+    "preguntas": [
+      "¿Cuándo son los exámenes parciales?",
+      "¿Qué tipos de evaluaciones existen?",
+      "¿Cómo me preparo para los exámenes finales?",
+      "¿Dónde encuentro el calendario de evaluaciones?",
+      "¿Puedo presentar examen de recuperación?"
+    ],
+    "respuesta": "📝 Las fechas y tipos de exámenes están publicadas en el calendario académico. Para más información sobre evaluaciones y recuperaciones, consulta la sección correspondiente en la plataforma UAM Virtual.",
+    "enlaces": [
+      {
+        "titulo": "Calendario Académico y Evaluaciones",
+        "url": "https://www.autonoma.edu.co/calendario-academico"
+      }
+    ],
+    "botones": [
+      {
+        "texto": "Ver calendario académico",
+        "accion": "enlace",
+        "destino": "https://www.autonoma.edu.co/calendario-academico"
+      },
+      {
+        "texto": "Ir a UAM Virtual",
+        "accion": "enlace",
+        "destino": "https://uamvirtual.autonoma.edu.co/"
+      }
+    ]
   }
 ]

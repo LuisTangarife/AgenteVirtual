@@ -119,11 +119,18 @@ function sendMessage() {
   }
 
   // Coincidencia exacta en datos
-  const tema = datos.find(d =>
-    normalizarTexto(d.tema) === textoNormalizado ||
-    (d.preguntas || []).some(p => textoNormalizado.includes(normalizarTexto(p)))
-  );
+  let tema = datos.find(d =>
+  normalizarTexto(d.tema) === textoNormalizado ||
+  (d.preguntas || []).some(p => textoNormalizado.includes(normalizarTexto(p))) ||
+  (d.tags || []).some(tag => textoNormalizado.includes(normalizarTexto(tag)))
+);
 
+if (!tema && fuseTemas) {
+  const resultadoTemas = fuseTemas.search(texto);
+  if (resultadoTemas.length > 0) {
+    tema = resultadoTemas[0].item;
+  }
+}
   if (tema) {
     appendMessage(`<strong>${tema.tema}</strong><br>${tema.respuesta}`, "bot");
     mostrarBotones(tema.tema);

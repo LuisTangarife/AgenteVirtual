@@ -192,7 +192,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
   // Cargar preguntas frecuentes y configurar Fuse.js
-  fetch("data/preguntas.json")
+  fetch("data/contenido-uam.json")
     .then(response => response.json())
     .then(data => {
       fuse = new Fuse(data, {

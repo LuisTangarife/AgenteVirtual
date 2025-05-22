@@ -161,11 +161,12 @@ if (!tema && fuseTemas) {
       appendMessage(`<strong>${pregunta}</strong><br>${respuesta}`, "bot");
       return;
     }
+} else {
+    // Aquí el caso de que sí hay fuse pero no hubo resultados
+    appendMessage("🤖 Lo siento, no encontré información sobre eso. Prueba con otra pregunta o usa los botones de guía.", "bot");
+    document.getElementById("botones-dinamicos").innerHTML = "";
+    return;
   }
-
-  // Sin resultados
-  appendMessage("🤖 Lo siento, no encontré información sobre eso. Prueba con otra pregunta o usa los botones de guía.", "bot");
-  document.getElementById("botones-dinamicos").innerHTML = "";
 }
 
 // ============================

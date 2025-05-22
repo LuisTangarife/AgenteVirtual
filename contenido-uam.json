@@ -162,14 +162,14 @@
     "enlaces": [
       {
         "titulo": "Información sobre el carné estudiantil",
-        "url": "https://www.autonoma.edu.co/"
+        "url": "https://intrauam.autonoma.edu.co/ponline/pagosEnLinea/informacion/page/view/otros_conceptos?concepto=todos"
       }
     ],
     "botones": [
       {
         "texto": "Solicitar carné estudiantil",
         "accion": "enlace",
-        "destino": "https://www.autonoma.edu.co/"
+        "destino": "https://intrauam.autonoma.edu.co/ponline/pagosEnLinea/informacion/page/view/otros_conceptos?concepto=todos"
       }
     ]
   },

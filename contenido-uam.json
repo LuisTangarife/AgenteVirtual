@@ -12,14 +12,14 @@
     "enlaces": [
       {
         "titulo": "Reglamento General Estudiantil",
-        "url": "https://www.autonoma.edu.co/images/documentos/Reglamento_General_Estudiantil.pdf"
+        "url": "https://www.autonoma.edu.co/documentos/reglamento-general-estudiantil"
       }
     ],
     "botones": [
       {
         "texto": "📘 Ver Reglamento",
         "accion": "enlace",
-        "destino": "https://www.autonoma.edu.co/images/documentos/Reglamento_General_Estudiantil.pdf"
+        "destino": "https://www.autonoma.edu.co/documentos/reglamento-general-estudiantil"
       },
       {
         "texto": "Consultar Pensum",
@@ -65,14 +65,14 @@
     "enlaces": [
       {
         "titulo": "Derechos Pecuniarios 2025",
-        "url": "https://www.autonoma.edu.co/images/documentos/Derechos_Pecuniarios_2025.pdf"
+        "url": "https://www.autonoma.edu.co/documentos/derechos-pecuniarios-2025"
       }
     ],
     "botones": [
       {
         "texto": "Ver Documento",
         "accion": "enlace",
-        "destino": "https://www.autonoma.edu.co/images/documentos/Derechos_Pecuniarios_2025.pdf"
+        "destino": "https://www.autonoma.edu.co/documentos/derechos-pecuniarios-2025"
       },
       {
         "texto": "Consultar Reglamento",

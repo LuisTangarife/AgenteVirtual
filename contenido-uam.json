@@ -41,14 +41,14 @@
     "enlaces": [
       {
         "titulo": "Oferta Académica - Pregrados",
-        "url": "https://www.autonoma.edu.co/oferta-academica/pregrados"
+        "url": "https://www.autonoma.edu.co/programas-academicos?facultad=All&modalidad=All&tipo-de-programa=62"
       }
     ],
     "botones": [
       {
         "texto": "Ir a Oferta Académica",
         "accion": "enlace",
-        "destino": "https://www.autonoma.edu.co/oferta-academica/pregrados"
+        "destino": "https://www.autonoma.edu.co/programas-academicos?facultad=All&modalidad=All&tipo-de-programa=62"
       }
     ]
   },

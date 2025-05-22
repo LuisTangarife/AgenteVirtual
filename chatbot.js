@@ -34,12 +34,25 @@ function appendMessage(text, sender) {
     hablar(text);
   }
 }
-  function limpiarHistorial() {
+
+// Limpia historial del chat
+function limpiarHistorial() {
   const chatBox = document.getElementById('chat-box');
   chatBox.innerHTML = '<div class="bot-message">🧠 Historial borrado. ¿En qué más puedo ayudarte?</div>';
   document.getElementById('botones-dinamicos').innerHTML = '';
 }
-// Simula una respuesta y muestra botones si hay coincidencia en el JSON
+
+// Normaliza el texto: sin tildes, espacios dobles, símbolos
+function normalizarTexto(texto) {
+  return texto
+    .toLowerCase()
+    .normalize("NFD").replace(/[\u0300-\u036f]/g, "") // elimina tildes
+    .replace(/[^\w\s]/gi, '') // elimina símbolos
+    .replace(/\s+/g, ' ') // reduce espacios múltiples
+    .trim();
+}
+
+// Enviar mensaje del usuario
 function sendMessage() {
   const input = document.getElementById("user-input");
   const texto = input.value.trim();
@@ -48,19 +61,54 @@ function sendMessage() {
   appendMessage(texto, "user");
   input.value = "";
 
+  const textoNormalizado = normalizarTexto(texto);
+
+  // Reconocimiento de saludos
+  const saludos = ["hola", "buenos dias", "buenas tardes", "buenas noches", "hey", "que tal"];
+  if (saludos.some(s => textoNormalizado.startsWith(s))) {
+    appendMessage("👋 ¡Hola! ¿En qué puedo ayudarte hoy?", "bot");
+    return;
+  }
+
+  // Reconocimiento de despedidas
+  const despedidas = ["adios", "hasta luego", "nos vemos", "chao", "gracias"];
+  if (despedidas.some(s => textoNormalizado.includes(s))) {
+    appendMessage("🙋‍♂️ ¡Hasta pronto! Si necesitas más ayuda, aquí estaré.", "bot");
+    return;
+  }
+
   // Buscar coincidencia en el JSON
   const tema = datos.find(d =>
-    d.tema.toLowerCase() === texto.toLowerCase() ||
-    (d.preguntas || []).some(p => texto.toLowerCase().includes(p.toLowerCase()))
+    normalizarTexto(d.tema) === textoNormalizado ||
+    (d.preguntas || []).some(p => textoNormalizado.includes(normalizarTexto(p)))
   );
 
+  // Si encuentra coincidencia en el tema
   if (tema) {
     appendMessage(`<strong>${tema.tema}</strong><br>${tema.respuesta}`, "bot");
     mostrarBotones(tema.tema);
-  } else {
-    appendMessage("🤖 Lo siento, no encontré información sobre eso. Prueba con otra pregunta o usa los botones de guía.", "bot");
-    document.getElementById("botones-dinamicos").innerHTML = "";
+    return;
   }
+
+  // Respuestas generales básicas como respaldo
+  const respuestasGenerales = [
+    { palabras: ["horario", "atencion", "abren"], respuesta: "⏰ Nuestro horario de atención es de lunes a viernes de 8 a.m. a 5 p.m." },
+    { palabras: ["telefono", "contacto", "llamar"], respuesta: "📞 Puedes contactarnos al 123-456-789 o escribirnos por WhatsApp." },
+    { palabras: ["correo", "email"], respuesta: "📧 Nuestro correo es info@uamvirtual.edu.co" }
+  ];
+
+  const matchGeneral = respuestasGenerales.find(r =>
+    r.palabras.some(p => textoNormalizado.includes(p))
+  );
+
+  if (matchGeneral) {
+    appendMessage(matchGeneral.respuesta, "bot");
+    return;
+  }
+
+  // Si no encuentra nada
+  appendMessage("🤖 Lo siento, no encontré información sobre eso. Prueba con otra pregunta o usa los botones de guía.", "bot");
+  document.getElementById("botones-dinamicos").innerHTML = "";
 }
 
 // Muestra botones interactivos desde el JSON
@@ -68,7 +116,7 @@ function mostrarBotones(tema) {
   const contenedor = document.getElementById("botones-dinamicos");
   contenedor.innerHTML = "";
 
-  const temaData = datos.find(d => d.tema.toLowerCase() === tema.toLowerCase());
+  const temaData = datos.find(d => normalizarTexto(d.tema) === normalizarTexto(tema));
   if (!temaData || !temaData.botones) {
     contenedor.classList.remove("mostrar");
     return;
@@ -88,7 +136,7 @@ function mostrarBotones(tema) {
     contenedor.appendChild(b);
   });
 
-  // Activar animación para mostrar botones
+  // Animación para mostrar botones
   setTimeout(() => contenedor.classList.add("mostrar"), 100);
 }
 
@@ -98,7 +146,7 @@ function toggleVoz() {
   alert(`Voz ${vozActiva ? 'activada' : 'desactivada'}`);
 }
 
-// Enviar mensaje con tecla Enter
+// Iniciar escucha del campo de texto
 document.addEventListener("DOMContentLoaded", () => {
   const input = document.getElementById("user-input");
   input.addEventListener("keypress", (e) => {
@@ -108,14 +156,14 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Cargar voces
+  // Cargar voces del navegador
   window.speechSynthesis.onvoiceschanged = () => speechSynthesis.getVoices();
 
-  // Mostrar un tema por defecto (opcional)
-  mostrarBotones("Reglamento Estudiantil");
+  // Mostrar por defecto botones de un tema si quieres (opcional)
+  // mostrarBotones("Reglamento Estudiantil");
 });
 
-// 🔁 Cargar el JSON con datos
+// Cargar el JSON de datos del bot
 let datos = [];
 fetch("contenido-uam.json")
   .then(res => res.json())
@@ -125,7 +173,7 @@ fetch("contenido-uam.json")
     appendMessage("⚠️ Error al cargar la información. Intenta más tarde.", "bot");
   });
 
-// =============================
-// 🚀 INICIO AUTOMÁTICO
-// =============================
-window.addEventListener("DOMContentLoaded", cargarHistorial);
+// Iniciar historial
+window.addEventListener("DOMContentLoaded", () => {
+  // Si usas historial, aquí puedes cargarlo
+});

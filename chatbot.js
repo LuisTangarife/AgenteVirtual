@@ -92,9 +92,9 @@ function sendMessage() {
 
   // Respuestas generales básicas como respaldo
   const respuestasGenerales = [
-    { palabras: ["horario", "atencion", "abren"], respuesta: "⏰ Nuestro horario de atención es de lunes a viernes de 8 a.m. a 5 p.m." },
-    { palabras: ["telefono", "contacto", "llamar"], respuesta: "📞 Puedes contactarnos al 123-456-789 o escribirnos por WhatsApp." },
-    { palabras: ["correo", "email"], respuesta: "📧 Nuestro correo es info@uamvirtual.edu.co" }
+    { palabras: ["horario", "atencion", "abren"], respuesta: "⏰ Nuestro horario de atención es de lunes a viernes de 7:30 a.m. a 6 p.m." },
+    { palabras: ["telefono", "contacto", "llamar"], respuesta: "📞 Puedes contactarnos al (606) 8727272 - Ext. 147 - 227 - 230 - 266 - 268." },
+    { palabras: ["correo", "email"], respuesta: "📧 Nuestro correo es registro.academico@autonoma.edu.co" }
   ];
 
   const matchGeneral = respuestasGenerales.find(r =>

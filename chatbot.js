@@ -120,24 +120,25 @@ function sendMessage() {
 
   // Coincidencia exacta en datos
   let tema = datos.find(d =>
-  normalizarTexto(d.tema) === textoNormalizado ||
-  (d.preguntas || []).some(p => textoNormalizado.includes(normalizarTexto(p))) ||
-  (d.tags || []).some(tag => textoNormalizado.includes(normalizarTexto(tag)))
-);
+    normalizarTexto(d.tema) === textoNormalizado ||
+    (d.preguntas || []).some(p => textoNormalizado.includes(normalizarTexto(p))) ||
+    (d.tags || []).some(tag => textoNormalizado.includes(normalizarTexto(tag)))
+  );
 
-if (!tema && fuseTemas) {
-  const resultadoTemas = fuseTemas.search(texto);
-  if (resultadoTemas.length > 0) {
-    tema = resultadoTemas[0].item;
+  if (!tema && fuseTemas) {
+    const resultadoTemas = fuseTemas.search(texto);
+    if (resultadoTemas.length > 0) {
+      tema = resultadoTemas[0].item;
+    }
   }
-}
+
   if (tema) {
     appendMessage(`<strong>${tema.tema}</strong><br>${tema.respuesta}`, "bot");
     mostrarBotones(tema.tema);
     return;
   }
 
-  // Respuestas generales básicas
+  // Respuestas generales
   const respuestasGenerales = [
     { palabras: ["horario", "atencion", "abren"], respuesta: "⏰ Nuestro horario de atención es de lunes a viernes de 7:30 a.m. a 6 p.m." },
     { palabras: ["telefono", "contacto", "llamar"], respuesta: "📞 Puedes contactarnos al (606) 8727272 - Ext. 147 - 227 - 230 - 266 - 268." },
@@ -153,7 +154,7 @@ if (!tema && fuseTemas) {
     return;
   }
 
-  // Búsqueda difusa con Fuse.js
+  // Búsqueda difusa en preguntas frecuentes
   if (fuse) {
     const resultados = fuse.search(texto);
     if (resultados.length > 0) {
@@ -161,13 +162,13 @@ if (!tema && fuseTemas) {
       appendMessage(`<strong>${pregunta}</strong><br>${respuesta}`, "bot");
       return;
     }
-} else {
-    // Aquí el caso de que sí hay fuse pero no hubo resultados
-    appendMessage("🤖 Lo siento, no encontré información sobre eso. Prueba con otra pregunta o usa los botones de guía.", "bot");
-    document.getElementById("botones-dinamicos").innerHTML = "";
-    return;
   }
+
+  // Si no hay coincidencias en ningún caso, muestra mensaje de error
+  appendMessage("🤖 Lo siento, no encontré información sobre eso. Prueba con otra pregunta o usa los botones de guía.", "bot");
+  document.getElementById("botones-dinamicos").innerHTML = "";
 }
+
 
 // ============================
 // EVENTOS Y CARGA DE DATOS

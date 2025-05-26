@@ -230,5 +230,34 @@
         "destino": "https://uamvirtual.autonoma.edu.co/"
       }
     ]
+  },
+   {
+    "tema": "Certificados",
+    "descripcion": "Información sobre fechas, tipos y requisitos para exámenes en la UAM.",
+    "tags": ["exámenes", "evaluaciones", "fechas", "requisitos", "universidad"],
+    "preguntas": [
+      "¿Cuáles son los tipos de certificados?",
+      "¿Cómo solicito un certificado?",
+      "¿Cuanto cuesta un certificado?",
+    ],
+    "respuesta": "📝 Las fechas y tipos de exámenes están publicadas en el calendario académico. Para más información sobre evaluaciones y recuperaciones, consulta la sección correspondiente en la plataforma UAM Virtual.",
+    "enlaces": [
+      {
+        "titulo": "Calendario Académico y Evaluaciones",
+        "url": "https://www.autonoma.edu.co/calendario-academico"
+      }
+    ],
+    "botones": [
+      {
+        "texto": "Ver calendario académico",
+        "accion": "enlace",
+        "destino": "https://www.autonoma.edu.co/calendario-academico"
+      },
+      {
+        "texto": "Ir a UAM Virtual",
+        "accion": "enlace",
+        "destino": "https://uamvirtual.autonoma.edu.co/"
+      }
+    ]
   }
 ]

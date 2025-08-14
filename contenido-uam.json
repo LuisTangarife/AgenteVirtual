@@ -258,36 +258,6 @@
         "destino": "https://intrauam.autonoma.edu.co/intrauam2/certificados/certificados/tiposCertificado"
       }
     ]
-  }
-  [
-  {
-    "tema": "Reglamento Estudiantil",
-    "descripcion": "Consulta el reglamento que rige la vida académica en la Universidad Autónoma de Manizales.",
-    "tags": ["reglamento", "normas", "estudiantes"],
-    "preguntas": [
-      "¿Dónde puedo consultar el reglamento estudiantil?",
-      "¿Cuál es el reglamento general para estudiantes?",
-      "Necesito información sobre el reglamento estudiantil"
-    ],
-    "respuesta": "📘 Puedes consultar el Reglamento General Estudiantil en el siguiente enlace. Este documento contiene las normas, derechos y deberes del estudiante UAM.",
-    "enlaces": [
-      {
-        "titulo": "Reglamento General Estudiantil",
-        "url": "https://www.autonoma.edu.co/documentos/reglamento-general-estudiantil"
-      }
-    ],
-    "botones": [
-      {
-        "texto": "📘 Ver Reglamento",
-        "accion": "enlace",
-        "destino": "https://www.autonoma.edu.co/documentos/reglamento-general-estudiantil"
-      },
-      {
-        "texto": "Consultar Pensum",
-        "accion": "pregunta",
-        "destino": "¿Cuál es el pensum del programa de Ingeniería Industrial?"
-      }
-    ]
   },
   {
     "tema": "Preguntas Frecuentes Intersemestral",
@@ -339,5 +309,5 @@
   }
 ]
 
-]
+
 

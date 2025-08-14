@@ -274,14 +274,14 @@
     "enlaces": [
       {
         "titulo": "Valores de matrícula intersemestral",
-        "url": "https://archivo.autonoma.edu.co/sites/default/files/2020/11/12/valores_matricula_2021.pdf"
+        "url": "https://www.autonoma.edu.co/documentos/derechos-pecuniarios-2025"
       }
     ],
     "botones": [
       {
         "texto": "💻 Ingresar a IntraUAM",
         "accion": "enlace",
-        "destino": "https://intra.uam.edu.co/"
+        "destino": "https://intrauam.autonoma.edu.co/intrauam2/site/login"
       }
     ],
     "detalles": [
@@ -303,11 +303,12 @@
       },
       {
         "pregunta": "¿Dónde puedo ver el valor del crédito para el intersemestral?",
-        "respuesta": "Puedes consultarlo en el siguiente enlace: https://archivo.autonoma.edu.co/sites/default/files/2020/11/12/valores_matricula_2021.pdf. Nota: El estudiante debe verificar con Registro Académico o en la página UAM el valor exacto que debe pagar."
+        "respuesta": "Puedes consultarlo en el siguiente enlace: https://www.autonoma.edu.co/documentos/derechos-pecuniarios-2025. Nota: El estudiante debe verificar con Registro Académico o en la página UAM el valor exacto que debe pagar."
       }
     ]
   }
 ]
+
 
 
 

@@ -259,55 +259,86 @@
       }
     ]
   },
-  {
-    "tema": "Preguntas Frecuentes Intersemestral",
-    "descripcion": "Información y pasos para la preinscripción, asignaturas ofertadas, créditos y valores del intersemestral en la Universidad Autónoma de Manizales.",
-    "tags": ["intersemestral", "preinscripción", "asignaturas", "créditos", "valores"],
-    "preguntas": [
-      "¿Qué debo hacer para preinscribirme al intersemestral?",
-      "¿Dónde puedo ver las asignaturas ofertadas para el intersemestral?",
-      "¿Qué debo hacer si no encuentro una asignatura?",
-      "¿Hasta cuántos créditos puedo inscribir en intersemestral?",
-      "¿Dónde puedo ver el valor del crédito para el intersemestral?"
-    ],
-    "respuesta": "📅 El intersemestral permite adelantar o repetir asignaturas en un periodo especial. Aquí tienes la información clave y los pasos a seguir.",
-    "enlaces": [
-      {
-        "titulo": "Valores de matrícula intersemestral",
-        "url": "https://www.autonoma.edu.co/documentos/derechos-pecuniarios-2025"
-      }
-    ],
-    "botones": [
-      {
-        "texto": "💻 Ingresar a IntraUAM",
-        "accion": "enlace",
-        "destino": "https://intrauam.autonoma.edu.co/intrauam2/site/login"
-      }
-    ],
-    "detalles": [
-      {
-        "pregunta": "¿Qué debo hacer para preinscribirme al intersemestral?",
-        "respuesta": "Debes ingresar a IntraUAM, luego dar click en la pestaña de 'Servicios Académicos' y continuar dando click en 'Intersemestral Preinscripciones'."
-      },
-      {
-        "pregunta": "¿Dónde puedo ver las asignaturas ofertadas para el intersemestral?",
-        "respuesta": "En el momento de inscribirte por IntraUAM encontrarás la oferta de asignaturas. Paso a paso: Ingresar a IntraUAM > Servicios Académicos > Intersemestral Preinscripciones."
-      },
-      {
-        "pregunta": "¿Qué debo hacer si no encuentro una asignatura?",
-        "respuesta": "En el formulario de inscripción hay una opción de 'Observaciones generales', allí puedes colocar cualquier novedad del proceso de preinscripción."
-      },
-      {
-        "pregunta": "¿Hasta cuántos créditos puedo inscribir en intersemestral?",
-        "respuesta": "Puedes inscribir hasta 9 créditos."
-      },
-      {
-        "pregunta": "¿Dónde puedo ver el valor del crédito para el intersemestral?",
-        "respuesta": "Puedes consultarlo en el siguiente enlace: https://www.autonoma.edu.co/documentos/derechos-pecuniarios-2025. Nota: El estudiante debe verificar con Registro Académico o en la página UAM el valor exacto que debe pagar."
-      }
-    ]
-  }
+ {
+  "tema": "Intersemestral — Preinscripción",
+  "descripcion": "Paso a paso para realizar la preinscripción al intersemestral.",
+  "tags": ["intersemestral", "preinscripción", "servicios académicos"],
+  "preguntas": [
+    "¿Qué debo hacer para preinscribirme al intersemestral?",
+    "¿Cómo me preinscribo al intersemestral?",
+    "preinscripción intersemestral"
+  ],
+  "respuesta": "Debes ingresar a IntraUAM, luego hacer clic en la pestaña de 'Servicios Académicos' y continuar en 'Intersemestral Preinscripciones'.",
+  "enlaces": [],
+  "botones": [
+    { "texto": "💻 Ingresar a IntraUAM", "accion": "enlace", "destino": "https://intra.uam.edu.co/" }
+  ]
+},
+{
+  "tema": "Intersemestral — Oferta de asignaturas",
+  "descripcion": "Dónde consultar las asignaturas ofertadas para el intersemestral.",
+  "tags": ["intersemestral", "asignaturas", "oferta"],
+  "preguntas": [
+    "¿Dónde puedo ver las asignaturas ofertadas para el intersemestral?",
+    "oferta intersemestral",
+    "qué materias hay en intersemestral"
+  ],
+  "respuesta": "La oferta aparece al momento de inscribirte por IntraUAM. Ruta: IntraUAM → Servicios Académicos → Intersemestral Preinscripciones.",
+  "enlaces": [],
+  "botones": [
+    { "texto": "💻 Ingresar a IntraUAM", "accion": "enlace", "destino": "https://intra.uam.edu.co/" }
+  ]
+},
+{
+  "tema": "Intersemestral — No encuentro una asignatura",
+  "descripcion": "Qué hacer si una asignatura no aparece en la oferta.",
+  "tags": ["intersemestral", "asignaturas", "observaciones"],
+  "preguntas": [
+    "¿Qué debo hacer si no encuentro una asignatura?",
+    "no aparece la asignatura",
+    "no encuentro la materia en intersemestral"
+  ],
+  "respuesta": "En el formulario de inscripción hay una opción de 'Observaciones generales'. Allí puedes informar la novedad del proceso de preinscripción.",
+  "enlaces": [],
+  "botones": [
+    { "texto": "💻 Ingresar a IntraUAM", "accion": "enlace", "destino": "https://intra.uam.edu.co/" }
+  ]
+},
+{
+  "tema": "Intersemestral — Tope de créditos",
+  "descripcion": "Cantidad máxima de créditos permitidos en intersemestral.",
+  "tags": ["intersemestral", "créditos", "límite"],
+  "preguntas": [
+    "¿Hasta cuántos créditos puedo inscribir en intersemestral?",
+    "límite de créditos intersemestral",
+    "máximo de créditos intersemestral"
+  ],
+  "respuesta": "Puedes inscribir hasta 9 créditos en el intersemestral.",
+  "enlaces": [],
+  "botones": []
+},
+{
+  "tema": "Intersemestral — Valor del crédito",
+  "descripcion": "Dónde consultar el valor del crédito para intersemestral.",
+  "tags": ["intersemestral", "valores", "matrícula"],
+  "preguntas": [
+    "¿Dónde puedo ver el valor del crédito para el intersemestral?",
+    "valor del crédito intersemestral",
+    "cuánto cuesta el intersemestral"
+  ],
+  "respuesta": "Consulta los valores en: https://archivo.autonoma.edu.co/sites/default/files/2020/11/12/valores_matricula_2021.pdf. Nota: Verifica con Registro Académico o en la página UAM el valor exacto que debes pagar.",
+  "enlaces": [
+    {
+      "titulo": "Valores de matrícula intersemestral",
+      "url": "https://archivo.autonoma.edu.co/sites/default/files/2020/11/12/valores_matricula_2021.pdf"
+    }
+  ],
+  "botones": [
+    { "texto": "📄 Ver valores", "accion": "enlace", "destino": "https://archivo.autonoma.edu.co/sites/default/files/2020/11/12/valores_matricula_2021.pdf" }
+  ]
+}
 ]
+
 
 
 

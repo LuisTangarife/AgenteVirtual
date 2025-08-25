@@ -171,7 +171,7 @@ document.addEventListener("DOMContentLoaded", () => {
   window.speechSynthesis.onvoiceschanged = () => speechSynthesis.getVoices();
 
   // 🔗 Aquí ponemos tu WebApp publicada de Google Apps Script
-  const url = "https://script.googleusercontent.com/a/macros/autonoma.edu.co/echo?user_content_key=AehSKLiA8SqhJWPbgf7zvJOee-H4bXxBQYqNLi6WzVba_nZ-K3F_qho9wHISe8fNx4Lq-x_Rr8iMu_M22aZTdLJuU1Y_JhhA3Jv7HMiCZn7YVLMicJa7FnjR8ItT4ubppHJ_orZUP8CLIYALazps6t8iNJReGhdLfiSZzMpF66fjsU_Fg23v9AFxElKYyHrn9gR3l119npZdKsTfQHZVpvRljgk5dn1oSI2LeeYrBy1UNNZLAqlq0CYmBwK9GG83Xc2E7F1jrH3iLCVF-HKwGOBgtmAlOAxsLRnAgbcqnbxCyP9vAp5y7fHG0jtMM-VUXw&lib=MJuiOc6dra1lVSsXvn_oxCth5IPMG9_MW";
+  const url = "https://script.google.com/a/macros/autonoma.edu.co/s/AKfycby5GV66WgB4uH2XFPgmD4y4_I9GcDYNTgvC5ShxRxeEloFbZywj_RUY188PwGCIltrUEw/exec";
 
   fetch(url)
     .then(res => res.json())
@@ -198,3 +198,4 @@ document.addEventListener("DOMContentLoaded", () => {
       appendMessage("⚠️ No se pudo conectar con la base de datos.", "bot");
     });
 });
+

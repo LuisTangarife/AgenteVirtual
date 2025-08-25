@@ -336,8 +336,70 @@
   "botones": [
     { "texto": "📄 Ver valores", "accion": "enlace", "destino": "https://archivo.autonoma.edu.co/sites/default/files/2020/11/12/valores_matricula_2021.pdf" }
   ]
-}
+},
+   {
+    "tema": "Intersemestral — Plan Estudia",
+    "descripcion": "Aplicación del beneficio del Plan Estudia en el intersemestral.",
+    "tags": ["intersemestral", "plan estudia", "beneficio", "matrícula"],
+    "preguntas": [
+      "¿El Plan Estudia aplica para el intersemestral?",
+      "¿Tengo beneficio del Plan Estudia en intersemestral?",
+      "plan estudia intersemestral"
+    ],
+    "respuesta": "✅ A los estudiantes que cuenten con el beneficio del Plan Estudia, también se les aplicará este beneficio al intersemestral. En caso de que no se vea reflejado en su recibo de matrícula, coloca una PQRSF en el sistema institucional.",
+    "enlaces": [
+      {
+        "titulo": "PQRSF UAM",
+        "url": "https://sgd.autonoma.edu.co/pqrsf/create"
+      }
+    ],
+    "botones": [
+      { "texto": "📩 Crear PQRSF", "accion": "enlace", "destino": "https://sgd.autonoma.edu.co/pqrsf/create" }
+    ]
+  },
+  {
+    "tema": "Intersemestral — Doble titulación",
+    "descripcion": "Proceso para inscribir asignaturas en intersemestral si eres estudiante de doble programa.",
+    "tags": ["intersemestral", "doble titulación", "doble programa"],
+    "preguntas": [
+      "¿Qué debo hacer si soy estudiante de doble titulación y quiero inscribir asignaturas?",
+      "doble programa intersemestral",
+      "inscripción intersemestral doble titulación"
+    ],
+    "respuesta": "📚 Una vez realizada la preinscripción al periodo intersemestral, debes ingresar a IntraUAM → Servicios Académicos → Distribución doble programa, para proceder a la generación del recibo de acuerdo al programa solicitado.",
+    "enlaces": [
+      {
+        "titulo": "IntraUAM",
+        "url": "https://intra.uam.edu.co/"
+      }
+    ],
+    "botones": [
+      { "texto": "💻 Ingresar a IntraUAM", "accion": "enlace", "destino": "https://intra.uam.edu.co/" }
+    ]
+  },
+  {
+    "tema": "Intersemestral — Descarga de recibo",
+    "descripcion": "Opciones para descargar el recibo de matrícula en intersemestral.",
+    "tags": ["intersemestral", "recibo", "descarga", "matrícula"],
+    "preguntas": [
+      "¿La opción para descargar recibo aplica también para intersemestral?",
+      "¿Cómo descargar el recibo de matrícula?",
+      "descargar recibo intersemestral"
+    ],
+    "respuesta": "🧾 Sí, todos los recibos de matrícula se pueden descargar por IntraUAM, siempre y cuando no te encuentres en prueba académica y no tengas deudas financieras con la UAM. Ruta: IntraUAM → Servicios Financieros → Recibo de matrícula.",
+    "enlaces": [
+      {
+        "titulo": "Manual de descarga de recibo",
+        "url": "https://portalconocimiento.autonoma.edu.co/?p=3558"
+      }
+    ],
+    "botones": [
+      { "texto": "📥 Ver Manual", "accion": "enlace", "destino": "https://portalconocimiento.autonoma.edu.co/?p=3558" },
+      { "texto": "💻 Ingresar a IntraUAM", "accion": "enlace", "destino": "https://intra.uam.edu.co/" }
+    ]
+  }
 ]
+
 
 
 

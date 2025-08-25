@@ -62,7 +62,7 @@ function normalizarTexto(texto) {
   return texto
     .toLowerCase()
     .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
-    .replace(/[^\w\s]/gi, '')
+    .replace(/[^\w\s]/gi, ' ')
     .replace(/\s+/g, ' ')
     .trim();
 }
@@ -94,6 +94,9 @@ function mostrarBotones(tema) {
   setTimeout(() => contenedor.classList.add("mostrar"), 100);
 }
 
+// ============================
+// PROCESAR MENSAJES
+// ============================
 function sendMessage() {
   const input = document.getElementById("user-input");
   const texto = input.value.trim();
@@ -104,33 +107,44 @@ function sendMessage() {
 
   const textoNormalizado = normalizarTexto(texto);
 
-  // Reconocimiento de saludos
+  // Saludos
   const saludos = ["hola", "buenos dias", "buenas tardes", "buenas noches", "hey", "que tal"];
   if (saludos.some(s => textoNormalizado.startsWith(s))) {
     appendMessage("👋 ¡Hola! ¿En qué puedo ayudarte hoy?", "bot");
     return;
   }
 
-  // Reconocimiento de despedidas
+  // Despedidas
   const despedidas = ["adios", "hasta luego", "nos vemos", "chao", "gracias"];
   if (despedidas.some(s => textoNormalizado.includes(s))) {
     appendMessage("🙋‍♂️ ¡Hasta pronto! Si necesitas más ayuda, aquí estaré.", "bot");
     return;
   }
 
-  // Coincidencia exacta en datos
+  // Coincidencia exacta
   let tema = datos.find(d =>
     normalizarTexto(d.tema) === textoNormalizado ||
     (d.preguntas || []).some(p => textoNormalizado.includes(normalizarTexto(p))) ||
     (d.tags || []).some(tag => textoNormalizado.includes(normalizarTexto(tag)))
   );
 
-  if (!tema && typeof fuseTemas !== "undefined" && fuseTemas) {
-  const resultadoTemas = fuseTemas.search(texto);
-  if (resultadoTemas.length > 0) {
-    tema = resultadoTemas[0].item;
+  // 🔍 Si no hay coincidencia exacta, usar búsqueda difusa con top 3
+  if (!tema && fuse) {
+    const resultados = fuse.search(texto, { limit: 3 }); // traer máximo 3
+    if (resultados.length > 0) {
+      if (resultados.length === 1) {
+        tema = resultados[0].item;
+      } else {
+        // Mostrar varias opciones
+        let respuestaMultiple = "🤖 Encontré varias posibles respuestas:<br><br>";
+        resultados.forEach((r, i) => {
+          respuestaMultiple += `<strong>${i + 1}. ${r.item.tema}</strong><br>${r.item.respuesta}<br><br>`;
+        });
+        appendMessage(respuestaMultiple, "bot");
+        return;
+      }
+    }
   }
-}
 
   if (tema) {
     appendMessage(`<strong>${tema.tema}</strong><br>${tema.respuesta}`, "bot");
@@ -138,39 +152,9 @@ function sendMessage() {
     return;
   }
 
-  // Respuestas generales
-  const respuestasGenerales = [
-    { palabras: ["horario", "atencion", "abren"], respuesta: "⏰ Nuestro horario de atención es de lunes a viernes de 7:30 a.m. a 6 p.m." },
-    { palabras: ["telefono", "contacto", "llamar"], respuesta: "📞 Puedes contactarnos al (606) 8727272 - Ext. 147 - 227 - 230 - 266 - 268." },
-    { palabras: ["correo", "email"], respuesta: "📧 Nuestro correo es registro.academico@autonoma.edu.co" }
-  ];
-
-  const matchGeneral = respuestasGenerales.find(r =>
-    r.palabras.some(p => textoNormalizado.includes(p))
-  );
-
-  if (matchGeneral) {
-    appendMessage(matchGeneral.respuesta, "bot");
-    return;
-  }
-
-  // Búsqueda difusa en preguntas frecuentes
- if (fuse) {
-  const resultados = fuse.search(texto);
-  if (resultados.length > 0) {
-    const { pregunta, respuesta } = resultados[0].item;
-    if (pregunta && respuesta) {
-      appendMessage(`<strong>${pregunta}</strong><br>${respuesta}`, "bot");
-      return;
-    }
-  }
-}
-
-  // Si no hay coincidencias en ningún caso, muestra mensaje de error
   appendMessage("🤖 Lo siento, no encontré información sobre eso. Prueba con otra pregunta o usa los botones de guía.", "bot");
   document.getElementById("botones-dinamicos").innerHTML = "";
 }
-
 
 // ============================
 // EVENTOS Y CARGA DE DATOS
@@ -186,57 +170,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
   window.speechSynthesis.onvoiceschanged = () => speechSynthesis.getVoices();
 
-  // Cargar JSON principal
+  // Cargar JSON y configurar Fuse.js
   fetch("contenido-uam.json")
     .then(res => res.json())
-    .then(json => { datos = json; })
+    .then(json => {
+      datos = json;
+
+      fuse = new Fuse(datos, {
+        keys: ["preguntas", "tags", "tema", "descripcion"],
+        threshold: 0.3, // sensibilidad
+        includeScore: true
+      });
+    })
     .catch(err => {
       console.error("Error al cargar el JSON:", err);
       appendMessage("⚠️ Error al cargar la información. Intenta más tarde.", "bot");
-    });
-
-  // Cargar preguntas frecuentes y configurar Fuse.js
-  fetch("data/contenido-uam.json")
-    .then(response => response.json())
-    .then(data => {
-      fuse = new Fuse(data, {
-        keys: ['pregunta', 'respuesta'],
-        threshold: 0.3,
-        includeScore: true
-      });
-
-      // Configurar input de búsqueda rápida
-      const searchInput = document.getElementById("searchInput");
-      const chatContainer = document.querySelector(".chat-container");
-
-      searchInput.addEventListener("input", function () {
-        const query = searchInput.value.trim();
-        chatContainer.innerHTML = "";
-
-        if (query === "") return;
-
-        const resultados = fuse.search(query);
-
-        if (resultados.length === 0) {
-          chatContainer.innerHTML = `<div class="respuesta">
-            <p>❌ No se encontraron resultados para: "<strong>${query}</strong>"</p>
-          </div>`;
-          return;
-        }
-
-        resultados.forEach(resultado => {
-          const item = resultado.item;
-          const respuestaHTML = `
-            <div class="respuesta">
-              <p class="pregunta-usuario">🤖 <strong>${item.pregunta}</strong></p>
-              <p>${item.respuesta}</p>
-            </div>
-          `;
-          chatContainer.innerHTML += respuestaHTML;
-        });
-      });
-    })
-    .catch(error => {
-      console.error("Error al cargar preguntas frecuentes:", error);
     });
 });

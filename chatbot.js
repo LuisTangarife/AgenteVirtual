@@ -170,20 +170,31 @@ document.addEventListener("DOMContentLoaded", () => {
 
   window.speechSynthesis.onvoiceschanged = () => speechSynthesis.getVoices();
 
-  // Cargar JSON y configurar Fuse.js
-  fetch("contenido-uam.json")
+  // 🔗 Aquí ponemos tu WebApp publicada de Google Apps Script
+  const url = "https://script.googleusercontent.com/a/macros/autonoma.edu.co/echo?user_content_key=AehSKLiA8SqhJWPbgf7zvJOee-H4bXxBQYqNLi6WzVba_nZ-K3F_qho9wHISe8fNx4Lq-x_Rr8iMu_M22aZTdLJuU1Y_JhhA3Jv7HMiCZn7YVLMicJa7FnjR8ItT4ubppHJ_orZUP8CLIYALazps6t8iNJReGhdLfiSZzMpF66fjsU_Fg23v9AFxElKYyHrn9gR3l119npZdKsTfQHZVpvRljgk5dn1oSI2LeeYrBy1UNNZLAqlq0CYmBwK9GG83Xc2E7F1jrH3iLCVF-HKwGOBgtmAlOAxsLRnAgbcqnbxCyP9vAp5y7fHG0jtMM-VUXw&lib=MJuiOc6dra1lVSsXvn_oxCth5IPMG9_MW";
+
+  fetch(url)
     .then(res => res.json())
     .then(json => {
-      datos = json;
+      datos = json.map(item => ({
+        ...item,
+        preguntas: item.preguntas ? item.preguntas.split(",").map(p => p.trim()) : [],
+        tags: item.tags ? item.tags.split(",").map(t => t.trim()) : [],
+        enlaces: item.enlaces ? JSON.parse(item.enlaces) : [],
+        botones: item.botones ? JSON.parse(item.botones) : []
+      }));
 
       fuse = new Fuse(datos, {
         keys: ["preguntas", "tags", "tema", "descripcion"],
-        threshold: 0.3, // sensibilidad
+        threshold: 0.3,
         includeScore: true
       });
+
+      console.log("✅ Datos cargados desde Google Sheets:", datos);
+      appendMessage("✅ Base de conocimientos cargada, ya puedes preguntar.", "bot");
     })
     .catch(err => {
-      console.error("Error al cargar el JSON:", err);
-      appendMessage("⚠️ Error al cargar la información. Intenta más tarde.", "bot");
+      console.error("Error al cargar desde WebApp:", err);
+      appendMessage("⚠️ No se pudo conectar con la base de datos.", "bot");
     });
 });

@@ -1,3 +1,4 @@
+<script>
 // ============================
 // VARIABLES Y CONFIGURACIONES
 // ============================
@@ -67,14 +68,9 @@ function normalizarTexto(texto) {
     .trim();
 }
 
-function mostrarBotones(tema) {
+function mostrarBotones(temaData) {
   const contenedor = document.getElementById("botones-dinamicos");
   contenedor.innerHTML = "";
-
-  // Buscar coincidencia flexible (no exacta)
-  const temaData = datos.find(d =>
-    normalizarTexto(d.tema).includes(normalizarTexto(tema))
-  );
 
   if (!temaData || !temaData.botones || temaData.botones.length === 0) {
     contenedor.classList.remove("mostrar");
@@ -154,7 +150,7 @@ function sendMessage() {
 
   if (tema) {
     appendMessage(`<strong>${tema.tema}</strong><br>${tema.respuesta}`, "bot");
-    mostrarBotones(tema.tema);
+    mostrarBotones(tema); // ✅ ahora le paso el objeto directamente
     return;
   }
 
@@ -180,30 +176,32 @@ document.addEventListener("DOMContentLoaded", () => {
   const url = "https://script.google.com/macros/s/AehSKLjKAZqUFAsTrkW9ulB1c9R_Jf9jc_dOFYJIgVHGdUTW9NIrsW3Y7_4SRMjkmOTuz0VsAsFw9bxnjZBHr_wvwFk8lYcT61rvcU_x57_2cxvAS6YBg0kLluY8Em1cyEsmphfucDiTmGva/exec";
 
   // Cargar JSON dinámico desde Google Sheets
- fetch(url)
-  .then(res => res.json())
-  .then(json => {
-    // Convertir textos JSON a objetos
-    datos = json.map(item => ({
-      ...item,
-      enlaces: item.enlaces ? JSON.parse(item.enlaces) : [],
-      botones: item.botones ? JSON.parse(item.botones) : []
-    }));
+  fetch(url)
+    .then(res => res.json())
+    .then(json => {
+      // Convertir strings en arrays y JSON en objetos
+      datos = json.map(item => ({
+        ...item,
+        preguntas: item.preguntas ? item.preguntas.split(",").map(p => p.trim()) : [],
+        tags: item.tags ? item.tags.split(",").map(t => t.trim()) : [],
+        enlaces: item.enlaces ? JSON.parse(item.enlaces) : [],
+        botones: item.botones ? JSON.parse(item.botones) : []
+      }));
 
-    // Inicializar Fuse.js
-    fuse = new Fuse(datos, {
-      keys: ["preguntas", "tags", "tema", "descripcion"],
-      threshold: 0.3,
-      includeScore: true
+      // Inicializar Fuse.js
+      fuse = new Fuse(datos, {
+        keys: ["preguntas", "tags", "tema", "descripcion"],
+        threshold: 0.3,
+        includeScore: true
+      });
+
+      console.log("✅ Datos cargados y parseados:", datos);
+    })
+    .catch(err => {
+      console.error("Error al cargar datos desde la WebApp:", err);
+      appendMessage("⚠️ Error al cargar la información. Intenta más tarde.", "bot");
     });
-
-    console.log("✅ Datos cargados y parseados:", datos);
-  })
-  .catch(err => {
-    console.error("Error al cargar datos desde la WebApp:", err);
-    appendMessage("⚠️ Error al cargar la información. Intenta más tarde.", "bot");
-  });
-;
-
+});
+</script>
 
 

@@ -171,7 +171,7 @@ document.addEventListener("DOMContentLoaded", () => {
   window.speechSynthesis.onvoiceschanged = () => speechSynthesis.getVoices();
 
   // ✅ URL de tu WebApp publicada en Google Apps Script
-  const url = "https://script.google.com/macros/s/AKfycbyExampleID1234567/exec";
+  const url = "https://script.google.com/a/macros/autonoma.edu.co/s/AKfycbw38xELE6GmqNSv8zIii7D1UqRgGIg_tbthm1BMEMOK8QtOSiaB7Ev4dKkhYhSmfwOG0A/exec";
 
   fetch(url)
     .then(res => res.json())
@@ -199,3 +199,4 @@ document.addEventListener("DOMContentLoaded", () => {
       appendMessage("⚠️ No se pudo conectar con la base de datos.", "bot");
     });
 });
+

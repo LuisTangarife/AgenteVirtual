@@ -71,8 +71,12 @@ function mostrarBotones(tema) {
   const contenedor = document.getElementById("botones-dinamicos");
   contenedor.innerHTML = "";
 
-  const temaData = datos.find(d => normalizarTexto(d.tema) === normalizarTexto(tema));
-  if (!temaData || !temaData.botones) {
+  // Buscar coincidencia flexible (no exacta)
+  const temaData = datos.find(d =>
+    normalizarTexto(d.tema).includes(normalizarTexto(tema))
+  );
+
+  if (!temaData || !temaData.botones || temaData.botones.length === 0) {
     contenedor.classList.remove("mostrar");
     return;
   }
@@ -80,6 +84,7 @@ function mostrarBotones(tema) {
   temaData.botones.forEach(btn => {
     const b = document.createElement("button");
     b.textContent = btn.texto;
+
     b.onclick = () => {
       if (btn.accion === "enlace") {
         window.open(btn.destino, "_blank");
@@ -88,6 +93,7 @@ function mostrarBotones(tema) {
         sendMessage();
       }
     };
+
     contenedor.appendChild(b);
   });
 
@@ -198,5 +204,6 @@ document.addEventListener("DOMContentLoaded", () => {
     appendMessage("⚠️ Error al cargar la información. Intenta más tarde.", "bot");
   });
 ;
+
 
 

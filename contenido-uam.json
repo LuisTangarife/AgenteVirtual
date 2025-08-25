@@ -397,8 +397,117 @@
       { "texto": "📥 Ver Manual", "accion": "enlace", "destino": "https://portalconocimiento.autonoma.edu.co/?p=3558" },
       { "texto": "💻 Ingresar a IntraUAM", "accion": "enlace", "destino": "https://intra.uam.edu.co/" }
     ]
+  },
+  {
+    "tema": "Intersemestral — Impresión del recibo",
+    "descripcion": "Recomendaciones para imprimir el recibo de matrícula.",
+    "tags": ["intersemestral", "recibo", "impresión", "matrícula"],
+    "preguntas": [
+      "¿Cómo debo imprimir mi recibo?",
+      "¿Qué impresora debo usar para el recibo?",
+      "impresión recibo intersemestral"
+    ],
+    "respuesta": "🖨️ La impresión de los recibos debe ser preferiblemente en impresora láser y en blanco y negro para que el código de barras sea más legible.",
+    "enlaces": [],
+    "botones": []
+  },
+  {
+    "tema": "Intersemestral — No aparece el recibo",
+    "descripcion": "Qué hacer si no aparece el recibo de matrícula en IntraUAM.",
+    "tags": ["intersemestral", "recibo", "bloqueo", "deuda"],
+    "preguntas": [
+      "No me aparece el recibo de matrícula ¿Qué debo hacer?",
+      "¿Por qué no aparece mi recibo?",
+      "problemas con recibo intersemestral"
+    ],
+    "respuesta": "⚠️ Al ingresar al menú 'Recibo de Matrícula' en IntraUAM puedes verificar la razón por la cual no aparece el recibo en la franja inferior. \n\n- Si tienes deuda con la UAM, debes ponerte en contacto con el área de Cartera por medio de PQRSF. \n- Si presentas bloqueo por prueba académica, debes esperar el cierre de semestre para verificar tu situación académica.",
+    "enlaces": [
+      {
+        "titulo": "PQRSF UAM",
+        "url": "https://sgd.autonoma.edu.co/pqrsf/create"
+      }
+    ],
+    "botones": [
+      { "texto": "📩 Crear PQRSF", "accion": "enlace", "destino": "https://sgd.autonoma.edu.co/pqrsf/create" }
+    ]
+  },
+  {
+    "tema": "Intersemestral — Descarga del recibo",
+    "descripcion": "Veces permitidas para descargar el recibo de matrícula.",
+    "tags": ["intersemestral", "recibo", "descargar", "matrícula"],
+    "preguntas": [
+      "¿Cuántas veces puedo descargar mi recibo de matrícula?",
+      "¿Hay límite para descargar el recibo?",
+      "descargar recibo varias veces"
+    ],
+    "respuesta": "⬇️ Tu recibo podrá ser descargado las veces que sean necesarias antes del proceso de pago.",
+    "enlaces": [],
+    "botones": []
+  },
+  {
+    "tema": "Intersemestral — Confirmar materias inscritas",
+    "descripcion": "Cómo verificar que las materias quedaron inscritas correctamente.",
+    "tags": ["intersemestral", "materias", "inscripción", "consulta"],
+    "preguntas": [
+      "¿Cómo sé si las materias quedaron inscritas?",
+      "verificar materias inscritas",
+      "¿Dónde consulto mis materias?"
+    ],
+    "respuesta": "📚 Para confirmar si tus materias quedaron inscritas: \n\n1. Ingresa a IntraUAM. \n2. Ve a Servicios Académicos. \n3. Selecciona 'Materias inscritas'. \n\n✅ Si las materias se visualizan, el proceso terminó de manera correcta.",
+    "enlaces": [
+      {
+        "titulo": "IntraUAM",
+        "url": "https://intra.uam.edu.co/"
+      }
+    ],
+    "botones": [
+      { "texto": "💻 Ingresar a IntraUAM", "accion": "enlace", "destino": "https://intra.uam.edu.co/" }
+    ]
+  },
+  {
+    "tema": "Intersemestral — Cancelación de asignatura",
+    "descripcion": "Plazos y condiciones para cancelar asignaturas en intersemestral.",
+    "tags": ["intersemestral", "cancelar", "asignaturas", "plazo"],
+    "preguntas": [
+      "¿Puedo cancelar una asignatura en intersemestral y qué plazo tengo?",
+      "plazo cancelación intersemestral",
+      "cancelar materia intersemestral"
+    ],
+    "respuesta": "🗓️ Sí, puedes cancelar una asignatura en el intersemestral. Consulta las fechas estipuladas en el calendario académico oficial.",
+    "enlaces": [
+      {
+        "titulo": "Calendario académico intersemestral",
+        "url": "https://www.autonoma.edu.co/sites/default/files/documentos/2020/12/calendario_academico_2021-_pregrado_presencial.pdf"
+      }
+    ],
+    "botones": [
+      { "texto": "📅 Ver calendario", "accion": "enlace", "destino": "https://www.autonoma.edu.co/sites/default/files/documentos/2020/12/calendario_academico_2021-_pregrado_presencial.pdf" }
+    ]
+  },
+  {
+    "tema": "Intersemestral — Beneficio económico",
+    "descripcion": "Descuento por cursar asignaturas en intersemestral estando a paz y salvo.",
+    "tags": ["intersemestral", "beneficio económico", "descuento", "matrícula"],
+    "preguntas": [
+      "¿Qué beneficio económico hay para el periodo intersemestral?",
+      "descuento intersemestral",
+      "beneficio 8% intersemestral"
+    ],
+    "respuesta": "💵 Si cursas asignaturas en el periodo intersemestral y te encuentras a paz y salvo al 31 de julio, tendrás un beneficio económico equivalente al 8% sobre el valor efectivamente pagado. \n\n👉 El trámite debe realizarse antes del 16 de julio, radicando una solicitud en PQRSF → Categoría: Pagos → Requerimiento: Devolución y/o aplicación de saldo a favor - Créditos.",
+    "enlaces": [
+      {
+        "titulo": "PQRSF UAM",
+        "url": "https://sgd.autonoma.edu.co/pqrsf/create"
+      }
+    ],
+    "botones": [
+      { "texto": "📩 Crear PQRSF", "accion": "enlace", "destino": "https://sgd.autonoma.edu.co/pqrsf/create" }
+    ]
   }
 ]
+
+
+
 
 
 

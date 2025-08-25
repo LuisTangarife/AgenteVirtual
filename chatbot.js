@@ -170,20 +170,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
   window.speechSynthesis.onvoiceschanged = () => speechSynthesis.getVoices();
 
-  // Cargar JSON y configurar Fuse.js
-  fetch("contenido-uam.json")
+  // 🔗 URL de tu WebApp publicada en Google Apps Script
+  const url = "https://script.google.com/macros/s/AehSKLjKAZqUFAsTrkW9ulB1c9R_Jf9jc_dOFYJIgVHGdUTW9NIrsW3Y7_4SRMjkmOTuz0VsAsFw9bxnjZBHr_wvwFk8lYcT61rvcU_x57_2cxvAS6YBg0kLluY8Em1cyEsmphfucDiTmGva/exec";
+
+  // Cargar JSON dinámico desde Google Sheets
+  fetch(url)
     .then(res => res.json())
     .then(json => {
       datos = json;
 
+      // Inicializar Fuse.js con los datos cargados
       fuse = new Fuse(datos, {
         keys: ["preguntas", "tags", "tema", "descripcion"],
         threshold: 0.3, // sensibilidad
         includeScore: true
       });
+
+      console.log("✅ Datos cargados desde Google Sheets:", datos);
     })
     .catch(err => {
-      console.error("Error al cargar el JSON:", err);
+      console.error("Error al cargar datos desde la WebApp:", err);
       appendMessage("⚠️ Error al cargar la información. Intenta más tarde.", "bot");
     });
 });
+

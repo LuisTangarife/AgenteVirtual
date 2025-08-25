@@ -170,12 +170,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   window.speechSynthesis.onvoiceschanged = () => speechSynthesis.getVoices();
 
-  // 🔗 Aquí ponemos tu WebApp publicada de Google Apps Script
-  const url = "https://script.googleusercontent.com/a/macros/autonoma.edu.co/echo?user_content_key=AehSKLhBEzb1NC75fMwEpxkHJObHyuI6N6VL7HdqqGUumEx88LbCXs1DQgA3AzAcqiDp7sVgyWqv-Raut6VtIjLCaMR8faSeaCL1G-8HZEFynocdXl3vG_C3f0ZbKYvmQCkcrkU0NzBH0I8-SApN1w7n7DQDQ4H10WI7F6SSEVXWuKKcBfU0FUkGbYhD-MA0oxaS_ywxY61dDa4pU24bFff7jpygXRQYQVzDBHK7dkRi7zWjjHXYWEh76Ga9dpsxFd4XK59IYvKuAKBtbBWdVRARrNd6i0AUBYoVRsDwl43GxoFpKuvLgLyQGaPzF540rg&lib=MJuiOc6dra1lVSsXvn_oxCth5IPMG9_MW";
+  // ✅ URL de tu WebApp publicada en Google Apps Script
+  const url = "https://script.google.com/macros/s/AKfycbyExampleID1234567/exec";
 
   fetch(url)
     .then(res => res.json())
     .then(json => {
+      // 🔥 Convertimos los strings a objetos/arrays reales
       datos = json.map(item => ({
         ...item,
         preguntas: item.preguntas ? item.preguntas.split(",").map(p => p.trim()) : [],
@@ -184,19 +185,17 @@ document.addEventListener("DOMContentLoaded", () => {
         botones: item.botones ? JSON.parse(item.botones) : []
       }));
 
+      // Inicializar Fuse.js
       fuse = new Fuse(datos, {
         keys: ["preguntas", "tags", "tema", "descripcion"],
         threshold: 0.3,
         includeScore: true
       });
 
-      console.log("✅ Datos cargados desde Google Sheets:", datos);
-      appendMessage("✅ Base de conocimientos cargada, ya puedes preguntar.", "bot");
+      console.log("✅ Datos cargados y parseados:", datos);
     })
     .catch(err => {
-      console.error("Error al cargar desde WebApp:", err);
+      console.error("Error al cargar datos desde la WebApp:", err);
       appendMessage("⚠️ No se pudo conectar con la base de datos.", "bot");
     });
 });
-
-

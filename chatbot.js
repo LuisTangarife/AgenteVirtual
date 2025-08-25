@@ -171,7 +171,7 @@ document.addEventListener("DOMContentLoaded", () => {
   window.speechSynthesis.onvoiceschanged = () => speechSynthesis.getVoices();
 
   // ✅ URL de tu WebApp publicada en Google Apps Script
-  const url = "https://script.google.com/a/macros/autonoma.edu.co/s/AKfycbyH6wTv5bvsdqgJXvVSR4RkSnsjY-_KEVkUtq4uuYEXBB-vvwk-hLE_2tEtyYPiu83Nvg/exec";
+  const url = "https://script.google.com/macros/s/AKfycbxe1xAj2BrZN2I7uBLHHJycMj5zLKmKkFEuJm8qk-Ku9fZhMkuVDZiz-fwjB1A0YPm7hQ/exec";
 
   fetch(url)
     .then(res => res.json())
@@ -199,6 +199,7 @@ document.addEventListener("DOMContentLoaded", () => {
       appendMessage("⚠️ No se pudo conectar con la base de datos.", "bot");
     });
 });
+
 
 
 

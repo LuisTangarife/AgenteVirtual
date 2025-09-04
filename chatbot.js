@@ -3,11 +3,14 @@
 // ============================
 let vozActiva = false;
 let datos = [];        // Base inicial desde el JSON
-let aprendizaje = [];  // Nuevos datos enseñados por el usuario
+let aprendizaje = [];  // Nuevos datos enseñados desde Sheets
 let fuse = null;
 
-let ultimaPregunta = null; // Para recordar la pregunta pendiente de aprender
+let ultimaPregunta = null;
 let modoAprendizaje = false;
+
+// URL de tu WebApp de Google Apps Script
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwqqnDuNyzUoTRVFvqe0rZvJZCDC6mFsMn4i8zTAWXFhjB2uPN7VX4iBnM6CAmhW3Lv/exec";
 
 // ============================
 // FUNCIONES DE VOZ
@@ -99,6 +102,34 @@ function mostrarBotones(tema) {
 }
 
 // ============================
+// FUNCIONES DE APRENDIZAJE
+// ============================
+function guardarAprendizaje(pregunta, respuesta) {
+  const nuevoDato = {
+    tema: pregunta,
+    respuesta: respuesta,
+    preguntas: [pregunta],
+    tags: []
+  };
+
+  aprendizaje.push(nuevoDato);
+
+  // Enviar al Google Sheet
+  fetch(GOOGLE_SCRIPT_URL, {
+    method: "POST",
+    body: JSON.stringify(nuevoDato)
+  })
+  .then(res => res.json())
+  .then(data => {
+    appendMessage("✅ ¡He aprendido la respuesta y la guardé en mi memoria!", "bot");
+  })
+  .catch(err => {
+    console.error("Error al guardar en Google Sheets:", err);
+    appendMessage("⚠️ Guardé la respuesta en mi memoria temporal, pero no pude enviarla al Google Sheet.", "bot");
+  });
+}
+
+// ============================
 // PROCESAR MENSAJES
 // ============================
 function sendMessage() {
@@ -113,13 +144,7 @@ function sendMessage() {
 
   // Si está en modo aprendizaje
   if (modoAprendizaje && ultimaPregunta) {
-    aprendizaje.push({
-      tema: ultimaPregunta,
-      respuesta: texto,
-      preguntas: [ultimaPregunta],
-      tags: []
-    });
-    appendMessage(`✅ ¡He aprendido la respuesta para: <strong>${ultimaPregunta}</strong>!`, "bot");
+    guardarAprendizaje(ultimaPregunta, texto);
     ultimaPregunta = null;
     modoAprendizaje = false;
     return;
@@ -169,9 +194,9 @@ function sendMessage() {
     return;
   }
 
-  // Si no se encontró nada → preguntar si quiere enseñar
+  // Si no se encontró nada → activar modo enseñar
   ultimaPregunta = texto;
-  appendMessage(`🤖 No encontré información sobre "<strong>${texto}</strong>".<br><br>¿Quieres enseñarme la respuesta? Escribe la respuesta ahora y la guardaré.`, "bot");
+  appendMessage(`🤖 No encontré información sobre "<strong>${texto}</strong>".<br><br>✍️ Escribe la respuesta ahora y la guardaré en mi memoria y en el Google Sheet.`, "bot");
   modoAprendizaje = true;
   document.getElementById("botones-dinamicos").innerHTML = "";
 }
@@ -204,6 +229,16 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     .catch(err => {
       console.error("Error al cargar el JSON:", err);
-      appendMessage("⚠️ Error al cargar la información. Intenta más tarde.", "bot");
+      appendMessage("⚠️ Error al cargar la información base. Intenta más tarde.", "bot");
+    });
+
+  // Cargar conocimientos aprendidos desde Google Sheets
+  fetch(GOOGLE_SCRIPT_URL)
+    .then(res => res.json())
+    .then(json => {
+      aprendizaje = json;
+    })
+    .catch(err => {
+      console.error("Error al cargar aprendizajes desde Sheets:", err);
     });
 });

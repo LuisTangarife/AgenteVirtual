@@ -128,14 +128,13 @@ function sendMessage() {
     (d.tags || []).some(tag => textoNormalizado.includes(normalizarTexto(tag)))
   );
 
-  // 🔍 Si no hay coincidencia exacta, usar búsqueda difusa con top 3
+  // 🔍 Si no hay coincidencia exacta, usar búsqueda difusa
   if (!tema && fuse) {
-    const resultados = fuse.search(texto, { limit: 3 }); // traer máximo 3
+    const resultados = fuse.search(texto, { limit: 3 });
     if (resultados.length > 0) {
       if (resultados.length === 1) {
         tema = resultados[0].item;
       } else {
-        // Mostrar varias opciones
         let respuestaMultiple = "🤖 Encontré varias posibles respuestas:<br><br>";
         resultados.forEach((r, i) => {
           respuestaMultiple += `<strong>${i + 1}. ${r.item.tema}</strong><br>${r.item.respuesta}<br><br>`;
@@ -152,8 +151,62 @@ function sendMessage() {
     return;
   }
 
-  appendMessage("🤖 Lo siento, no encontré información sobre eso. Prueba con otra pregunta o usa los botones de guía.", "bot");
+  // ❌ No encontró → ofrecer enseñanza
+  const idPregunta = Date.now();
+  appendMessage(`
+    🤖 No encontré información sobre: <em>"${texto}"</em><br>
+    ¿Quieres enseñarme la respuesta?<br>
+    <button onclick="mostrarFormularioAprendizaje('${texto}', '${idPregunta}')">📝 Enseñar respuesta</button>
+    <div id="form-${idPregunta}"></div>
+  `, "bot");
+
   document.getElementById("botones-dinamicos").innerHTML = "";
+}
+
+// === FORMULARIO PARA ENSEÑAR ===
+function mostrarFormularioAprendizaje(pregunta, id) {
+  const contenedor = document.getElementById(`form-${id}`);
+  contenedor.innerHTML = `
+    <input type="text" id="respuesta-${id}" placeholder="Escribe la respuesta aquí" style="width:80%">
+    <button onclick="guardarAprendizaje('${pregunta}', '${id}')">Guardar ✅</button>
+  `;
+}
+
+function guardarAprendizaje(pregunta, id) {
+  const respuesta = document.getElementById(`respuesta-${id}`).value.trim();
+  if (!respuesta) {
+    alert("Por favor escribe una respuesta");
+    return;
+  }
+
+  // Llamada POST al Apps Script
+  fetch("https://script.google.com/macros/s/AKfycbwDzrYK1wTqt0wZ59v4VfTH9TsvhsTL8RtYxNm04AT1QT_-7aJcE6y-CvySPovhN-LF/exec", {
+    method: "POST",
+    body: JSON.stringify({ pregunta, respuesta })
+  })
+    .then(res => res.json())
+    .then(data => {
+      if (data.success) {
+        appendMessage(`✅ ¡Gracias! He aprendido la respuesta a: <em>"${pregunta}"</em>`, "bot");
+        document.getElementById(`form-${id}`).innerHTML = "";
+
+        // 🔥 Agregar inmediatamente al dataset local
+        datos.push({
+          tema: pregunta,
+          respuesta: respuesta,
+          preguntas: [pregunta],
+          tags: [],
+          botones: []
+        });
+        fuse.setCollection(datos); // actualizar Fuse.js
+      } else {
+        appendMessage("⚠️ Error al guardar en la base de datos.", "bot");
+      }
+    })
+    .catch(err => {
+      console.error("Error al guardar:", err);
+      appendMessage("⚠️ No se pudo conectar con la base de datos.", "bot");
+    });
 }
 
 // ============================
@@ -171,12 +224,11 @@ document.addEventListener("DOMContentLoaded", () => {
   window.speechSynthesis.onvoiceschanged = () => speechSynthesis.getVoices();
 
   // ✅ URL de tu WebApp publicada en Google Apps Script
-  const url = "https://script.google.com/macros/s/AKfycbxe1xAj2BrZN2I7uBLHHJycMj5zLKmKkFEuJm8qk-Ku9fZhMkuVDZiz-fwjB1A0YPm7hQ/exec";
+  const url = "https://script.google.com/macros/s/AKfycbwDzrYK1wTqt0wZ59v4VfTH9TsvhsTL8RtYxNm04AT1QT_-7aJcE6y-CvySPovhN-LF/exec";
 
   fetch(url)
     .then(res => res.json())
     .then(json => {
-      // 🔥 Convertimos los strings a objetos/arrays reales
       datos = json.map(item => ({
         ...item,
         preguntas: item.preguntas ? item.preguntas.split(",").map(p => p.trim()) : [],
@@ -185,7 +237,6 @@ document.addEventListener("DOMContentLoaded", () => {
         botones: item.botones ? JSON.parse(item.botones) : []
       }));
 
-      // Inicializar Fuse.js
       fuse = new Fuse(datos, {
         keys: ["preguntas", "tags", "tema", "descripcion"],
         threshold: 0.3,
@@ -199,8 +250,3 @@ document.addEventListener("DOMContentLoaded", () => {
       appendMessage("⚠️ No se pudo conectar con la base de datos.", "bot");
     });
 });
-
-
-
-
-

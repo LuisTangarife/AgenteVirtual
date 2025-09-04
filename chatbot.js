@@ -8,6 +8,7 @@ let fuse = null;
 
 let ultimaPregunta = null;
 let modoAprendizaje = false;
+let pasoEnsenar = 0; // 0 = nada, 1 = esperando pregunta, 2 = esperando respuesta
 
 // URL de tu WebApp de Google Apps Script
 const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwqqnDuNyzUoTRVFvqe0rZvJZCDC6mFsMn4i8zTAWXFhjB2uPN7VX4iBnM6CAmhW3Lv/exec";
@@ -142,7 +143,20 @@ function sendMessage() {
 
   const textoNormalizado = normalizarTexto(texto);
 
-  // Si está en modo aprendizaje
+  // Si está en modo enseñar manual
+  if (pasoEnsenar === 1) {
+    ultimaPregunta = texto;
+    pasoEnsenar = 2;
+    appendMessage("✍️ Perfecto, ahora escribe la **respuesta** que debería dar el bot.", "bot");
+    return;
+  } else if (pasoEnsenar === 2 && ultimaPregunta) {
+    guardarAprendizaje(ultimaPregunta, texto);
+    ultimaPregunta = null;
+    pasoEnsenar = 0;
+    return;
+  }
+
+  // Si está en modo aprendizaje automático (cuando no encontró algo)
   if (modoAprendizaje && ultimaPregunta) {
     guardarAprendizaje(ultimaPregunta, texto);
     ultimaPregunta = null;
@@ -194,7 +208,7 @@ function sendMessage() {
     return;
   }
 
-  // Si no se encontró nada → activar modo enseñar
+  // Si no se encontró nada → activar modo enseñar automático
   ultimaPregunta = texto;
   appendMessage(`🤖 No encontré información sobre "<strong>${texto}</strong>".<br><br>✍️ Escribe la respuesta ahora y la guardaré en mi memoria y en el Google Sheet.`, "bot");
   modoAprendizaje = true;
@@ -215,12 +229,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
   window.speechSynthesis.onvoiceschanged = () => speechSynthesis.getVoices();
 
+  // Botón "Enseñar"
+  const btnEnsenar = document.getElementById("btn-ensenar");
+  if (btnEnsenar) {
+    btnEnsenar.addEventListener("click", () => {
+      pasoEnsenar = 1;
+      appendMessage("📘 Modo enseñanza activado.<br>✍️ Escribe la **pregunta** que quieres que el bot aprenda.", "bot");
+    });
+  }
+
   // Cargar JSON y configurar Fuse.js
   fetch("contenido-uam.json")
     .then(res => res.json())
     .then(json => {
       datos = json;
-
       fuse = new Fuse([...datos, ...aprendizaje], {
         keys: ["preguntas", "tags", "tema", "descripcion"],
         threshold: 0.3,

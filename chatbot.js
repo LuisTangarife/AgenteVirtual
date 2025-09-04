@@ -2,8 +2,12 @@
 // VARIABLES Y CONFIGURACIONES
 // ============================
 let vozActiva = false;
-let datos = [];
+let datos = [];        // Base inicial desde el JSON
+let aprendizaje = [];  // Nuevos datos enseñados por el usuario
 let fuse = null;
+
+let ultimaPregunta = null; // Para recordar la pregunta pendiente de aprender
+let modoAprendizaje = false;
 
 // ============================
 // FUNCIONES DE VOZ
@@ -12,7 +16,7 @@ function hablar(texto) {
   if (!vozActiva) return;
 
   const msg = new SpeechSynthesisUtterance();
-  msg.text = texto.replace(/<[^>]+>/g, ''); // Remueve HTML
+  msg.text = texto.replace(/<[^>]+>/g, '');
   msg.lang = 'es-ES';
   msg.pitch = 1.1;
   msg.rate = 1;
@@ -71,7 +75,7 @@ function mostrarBotones(tema) {
   const contenedor = document.getElementById("botones-dinamicos");
   contenedor.innerHTML = "";
 
-  const temaData = datos.find(d => normalizarTexto(d.tema) === normalizarTexto(tema));
+  const temaData = [...datos, ...aprendizaje].find(d => normalizarTexto(d.tema) === normalizarTexto(tema));
   if (!temaData || !temaData.botones) {
     contenedor.classList.remove("mostrar");
     return;
@@ -107,6 +111,20 @@ function sendMessage() {
 
   const textoNormalizado = normalizarTexto(texto);
 
+  // Si está en modo aprendizaje
+  if (modoAprendizaje && ultimaPregunta) {
+    aprendizaje.push({
+      tema: ultimaPregunta,
+      respuesta: texto,
+      preguntas: [ultimaPregunta],
+      tags: []
+    });
+    appendMessage(`✅ ¡He aprendido la respuesta para: <strong>${ultimaPregunta}</strong>!`, "bot");
+    ultimaPregunta = null;
+    modoAprendizaje = false;
+    return;
+  }
+
   // Saludos
   const saludos = ["hola", "buenos dias", "buenas tardes", "buenas noches", "hey", "que tal"];
   if (saludos.some(s => textoNormalizado.startsWith(s))) {
@@ -121,8 +139,8 @@ function sendMessage() {
     return;
   }
 
-  // Coincidencia exacta
-  let tema = datos.find(d =>
+  // Buscar en base JSON + aprendizaje
+  let tema = [...datos, ...aprendizaje].find(d =>
     normalizarTexto(d.tema) === textoNormalizado ||
     (d.preguntas || []).some(p => textoNormalizado.includes(normalizarTexto(p))) ||
     (d.tags || []).some(tag => textoNormalizado.includes(normalizarTexto(tag)))
@@ -151,62 +169,11 @@ function sendMessage() {
     return;
   }
 
-  // ❌ No encontró → ofrecer enseñanza
-  const idPregunta = Date.now();
-  appendMessage(`
-    🤖 No encontré información sobre: <em>"${texto}"</em><br>
-    ¿Quieres enseñarme la respuesta?<br>
-    <button onclick="mostrarFormularioAprendizaje('${texto}', '${idPregunta}')">📝 Enseñar respuesta</button>
-    <div id="form-${idPregunta}"></div>
-  `, "bot");
-
+  // Si no se encontró nada → preguntar si quiere enseñar
+  ultimaPregunta = texto;
+  appendMessage(`🤖 No encontré información sobre "<strong>${texto}</strong>".<br><br>¿Quieres enseñarme la respuesta? Escribe la respuesta ahora y la guardaré.`, "bot");
+  modoAprendizaje = true;
   document.getElementById("botones-dinamicos").innerHTML = "";
-}
-
-// === FORMULARIO PARA ENSEÑAR ===
-function mostrarFormularioAprendizaje(pregunta, id) {
-  const contenedor = document.getElementById(`form-${id}`);
-  contenedor.innerHTML = `
-    <input type="text" id="respuesta-${id}" placeholder="Escribe la respuesta aquí" style="width:80%">
-    <button onclick="guardarAprendizaje('${pregunta}', '${id}')">Guardar ✅</button>
-  `;
-}
-
-function guardarAprendizaje(pregunta, id) {
-  const respuesta = document.getElementById(`respuesta-${id}`).value.trim();
-  if (!respuesta) {
-    alert("Por favor escribe una respuesta");
-    return;
-  }
-
-  // Llamada POST al Apps Script
-  fetch("https://script.google.com/macros/s/AKfycbwDzrYK1wTqt0wZ59v4VfTH9TsvhsTL8RtYxNm04AT1QT_-7aJcE6y-CvySPovhN-LF/exec", {
-    method: "POST",
-    body: JSON.stringify({ pregunta, respuesta })
-  })
-    .then(res => res.json())
-    .then(data => {
-      if (data.success) {
-        appendMessage(`✅ ¡Gracias! He aprendido la respuesta a: <em>"${pregunta}"</em>`, "bot");
-        document.getElementById(`form-${id}`).innerHTML = "";
-
-        // 🔥 Agregar inmediatamente al dataset local
-        datos.push({
-          tema: pregunta,
-          respuesta: respuesta,
-          preguntas: [pregunta],
-          tags: [],
-          botones: []
-        });
-        fuse.setCollection(datos); // actualizar Fuse.js
-      } else {
-        appendMessage("⚠️ Error al guardar en la base de datos.", "bot");
-      }
-    })
-    .catch(err => {
-      console.error("Error al guardar:", err);
-      appendMessage("⚠️ No se pudo conectar con la base de datos.", "bot");
-    });
 }
 
 // ============================
@@ -223,30 +190,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
   window.speechSynthesis.onvoiceschanged = () => speechSynthesis.getVoices();
 
-  // ✅ URL de tu WebApp publicada en Google Apps Script
-  const url = "https://script.google.com/macros/s/AKfycbwDzrYK1wTqt0wZ59v4VfTH9TsvhsTL8RtYxNm04AT1QT_-7aJcE6y-CvySPovhN-LF/exec";
-
-  fetch(url)
+  // Cargar JSON y configurar Fuse.js
+  fetch("contenido-uam.json")
     .then(res => res.json())
     .then(json => {
-      datos = json.map(item => ({
-        ...item,
-        preguntas: item.preguntas ? item.preguntas.split(",").map(p => p.trim()) : [],
-        tags: item.tags ? item.tags.split(",").map(t => t.trim()) : [],
-        enlaces: item.enlaces ? JSON.parse(item.enlaces) : [],
-        botones: item.botones ? JSON.parse(item.botones) : []
-      }));
+      datos = json;
 
-      fuse = new Fuse(datos, {
+      fuse = new Fuse([...datos, ...aprendizaje], {
         keys: ["preguntas", "tags", "tema", "descripcion"],
         threshold: 0.3,
         includeScore: true
       });
-
-      console.log("✅ Datos cargados y parseados:", datos);
     })
     .catch(err => {
-      console.error("Error al cargar datos desde la WebApp:", err);
-      appendMessage("⚠️ No se pudo conectar con la base de datos.", "bot");
+      console.error("Error al cargar el JSON:", err);
+      appendMessage("⚠️ Error al cargar la información. Intenta más tarde.", "bot");
     });
 });

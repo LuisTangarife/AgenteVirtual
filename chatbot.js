@@ -1,4 +1,4 @@
-<script>
+
 // ============================
 // VARIABLES Y CONFIGURACIONES
 // ============================
@@ -285,7 +285,8 @@ document.addEventListener("DOMContentLoaded", () => {
       console.error("Error al cargar aprendizajes desde Sheets:", err);
     });
 });
-</script>
+
+
 
 
 

@@ -140,10 +140,10 @@ function guardarAprendizaje(pregunta, respuesta) {
 // ============================
 async function consultarGemini(pregunta) {
   try {
-    const resp = await fetch("https://script.google.com/a/macros/s/AKfycbybO_NvI7bs2pc44eZ3nRwyKuN8avcNooaC9A-qC0_VeVfCIh80EkTVoKnf3vlInyaw/exec", {
+    const resp = await fetch(https://script.google.com/a/macros/s/AKfycbybO_NvI7bs2pc44eZ3nRwyKuN8avcNooaC9A-qC0_VeVfCIh80EkTVoKnf3vlInyaw/exec, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ pregunta: pregunta })  // ✅ corregido
+      body: JSON.stringify({ pregunta: pregunta })  
     });
     const data = await resp.json();
     return data.respuesta || "⚠️ No obtuve respuesta de Gemini.";
@@ -152,6 +152,7 @@ async function consultarGemini(pregunta) {
     return "⚠️ Error al conectar con la IA.";
   }
 }
+
 
 // ============================
 // PROCESAR MENSAJES
@@ -285,6 +286,7 @@ document.addEventListener("DOMContentLoaded", () => {
       console.error("Error al cargar aprendizajes desde Sheets:", err);
     });
 });
+
 
 
 

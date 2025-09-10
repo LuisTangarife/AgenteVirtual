@@ -12,10 +12,10 @@ let modoAprendizaje = false;
 let pasoEnsenar = 0; // 0 = nada, 1 = esperando pregunta, 2 = esperando respuesta
 
 // URL de tu WebApp de Google Apps Script
-const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwqqnDuNyzUoTRVFvqe0rZvJZCDC6mFsMn4i8zTAWXFhjB2uPN7VX4iBnM6CAmhW3Lv/exec";
+const GOOGLE_SCRIPT_URL = "https://script.google.com/a/macros/s/AKfycbybO_NvI7bs2pc44eZ3nRwyKuN8avcNooaC9A-qC0_VeVfCIh80EkTVoKnf3vlInyaw/exec";
 
 // WebApp que conecta a Gemini
-const GEMINI_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyXSh-pQrnQXK2j9D0dAcZR_DpAeSJ3j709MzmWNBeiubMCWLRMAGKAkhyoHrH2avdG/exec";
+const GEMINI_SCRIPT_URL = "https://script.google.com/a/macros/s/AKfycbybO_NvI7bs2pc44eZ3nRwyKuN8avcNooaC9A-qC0_VeVfCIh80EkTVoKnf3vlInyaw/exec";
 
 // ============================
 // FUNCIONES DE VOZ
@@ -286,6 +286,7 @@ document.addEventListener("DOMContentLoaded", () => {
       console.error("Error al cargar aprendizajes desde Sheets:", err);
     });
 });
+
 
 
 

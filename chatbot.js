@@ -140,10 +140,10 @@ function guardarAprendizaje(pregunta, respuesta) {
 // ============================
 async function consultarGemini(pregunta) {
   try {
-    const resp = await fetch("https://script.google.com/macros/s/AKfycbzDE1SFj_xZTknyGX_7xOPH8hbveTjxnrsQ_11IPLtLRskPj_2kr5Wf0UVWiwQHwZSA/exec", {
+    const resp = await fetch("https://script.google.com/macros/s/TU_WEBAPP_ID/exec", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ prompt: pregunta })
+      body: JSON.stringify({ pregunta: pregunta })  // ✅ corregido
     });
     const data = await resp.json();
     return data.respuesta || "⚠️ No obtuve respuesta de Gemini.";
@@ -285,6 +285,7 @@ document.addEventListener("DOMContentLoaded", () => {
       console.error("Error al cargar aprendizajes desde Sheets:", err);
     });
 });
+
 
 
 

@@ -11,7 +11,7 @@ let ultimaPregunta = null;
 let modoAprendizaje = false;
 let pasoEnsenar = 0; // 0 = nada, 1 = esperando pregunta, 2 = esperando respuesta
 // WebApp que conecta a Gemini
-const GEMINI_SCRIPT_URL = "https://script.google.com/macros/s/AKfycby6EfNPPfmDPw7XWBPC9yPypDkvwiv9m-RVyvagHg-8hTHotEOw2e_sM2RgzEHY5hyc/exec";
+const GEMINI_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw9IDKScf87lR6IjUd_W-SLT-Shn4a_hNQtvvKL7jo3ulf6WZjVWK6Gaz1TKr-7Iop_/exec";
 
 // ============================
 // FUNCIONES DE VOZ
@@ -281,6 +281,7 @@ fetch(GEMINI_SCRIPT_URL)
     console.error("Error al cargar aprendizajes desde Sheets:", err);
   });
 });
+
 
 
 

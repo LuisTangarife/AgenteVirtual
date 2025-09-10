@@ -10,10 +10,6 @@ let fuse = null;
 let ultimaPregunta = null;
 let modoAprendizaje = false;
 let pasoEnsenar = 0; // 0 = nada, 1 = esperando pregunta, 2 = esperando respuesta
-
-// URL de tu WebApp de Google Apps Script
-const GOOGLE_SCRIPT_URL = "https://script.google.com/a/macros/s/AKfycbybO_NvI7bs2pc44eZ3nRwyKuN8avcNooaC9A-qC0_VeVfCIh80EkTVoKnf3vlInyaw/exec";
-
 // WebApp que conecta a Gemini
 const GEMINI_SCRIPT_URL = "https://script.google.com/a/macros/s/AKfycbybO_NvI7bs2pc44eZ3nRwyKuN8avcNooaC9A-qC0_VeVfCIh80EkTVoKnf3vlInyaw/exec";
 
@@ -107,6 +103,24 @@ function mostrarBotones(tema) {
 }
 
 // ============================
+// CONSULTA A GEMINI
+// ============================
+async function consultarGemini(pregunta) {
+  try {
+    const resp = await fetch(GEMINI_SCRIPT_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ pregunta: pregunta })
+    });
+    const data = await resp.json();
+    return data.respuesta || "⚠️ No obtuve respuesta de Gemini.";
+  } catch (e) {
+    console.error("Error consultando Gemini:", e);
+    return "⚠️ Error al conectar con la IA.";
+  }
+}
+
+// ============================
 // FUNCIONES DE APRENDIZAJE
 // ============================
 function guardarAprendizaje(pregunta, respuesta) {
@@ -119,8 +133,7 @@ function guardarAprendizaje(pregunta, respuesta) {
 
   aprendizaje.push(nuevoDato);
 
-  // Enviar al Google Sheet
-  fetch("https://script.google.com/a/macros/s/AKfycbybO_NvI7bs2pc44eZ3nRwyKuN8avcNooaC9A-qC0_VeVfCIh80EkTVoKnf3vlInyaw/exec", {
+  fetch(GEMINI_SCRIPT_URL, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(nuevoDato)
@@ -133,24 +146,6 @@ function guardarAprendizaje(pregunta, respuesta) {
     console.error("Error al guardar en Google Sheets:", err);
     appendMessage("⚠️ Guardé la respuesta en mi memoria temporal, pero no pude enviarla al Google Sheet.", "bot");
   });
-}
-
-// ============================
-// CONSULTA A GEMINI
-// ============================
-async function consultarGemini(pregunta) {
-  try {
-    const resp = await fetch("https://script.google.com/a/macros/s/AKfycbybO_NvI7bs2pc44eZ3nRwyKuN8avcNooaC9A-qC0_VeVfCIh80EkTVoKnf3vlInyaw/exec", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ pregunta: pregunta })  
-    });
-    const data = await resp.json();
-    return data.respuesta || "⚠️ No obtuve respuesta de Gemini.";
-  } catch (e) {
-    console.error("Error consultando Gemini:", e);
-    return "⚠️ Error al conectar con la IA.";
-  }
 }
 
 
@@ -276,16 +271,17 @@ document.addEventListener("DOMContentLoaded", () => {
       appendMessage("⚠️ Error al cargar la información base. Intenta más tarde.", "bot");
     });
 
-  // Cargar conocimientos aprendidos desde Google Sheets
-  fetch("https://script.google.com/a/macros/s/AKfycbybO_NvI7bs2pc44eZ3nRwyKuN8avcNooaC9A-qC0_VeVfCIh80EkTVoKnf3vlInyaw/exec")
-    .then(res => res.json())
-    .then(json => {
-      aprendizaje = aprendizaje.concat(json);
-    })
-    .catch(err => {
-      console.error("Error al cargar aprendizajes desde Sheets:", err);
-    });
+ // Cargar conocimientos aprendidos desde Google Sheets
+fetch(GEMINI_SCRIPT_URL)
+  .then(res => res.json())
+  .then(json => {
+    aprendizaje = aprendizaje.concat(json);
+  })
+  .catch(err => {
+    console.error("Error al cargar aprendizajes desde Sheets:", err);
+  });
 });
+
 
 
 

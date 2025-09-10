@@ -264,4 +264,18 @@ document.addEventListener("DOMContentLoaded", () => {
       console.error("Error al cargar aprendizajes desde Sheets:", err);
     });
 });
+async function consultarGemini(pregunta) {
+  try {
+    const resp = await fetch(GOOGLE_SCRIPT_URL, {
+      method: "POST",
+      body: JSON.stringify({ prompt: pregunta })
+    });
+    const data = await resp.json();
+    return data.respuesta || "⚠️ No obtuve respuesta de Gemini.";
+  } catch (e) {
+    console.error("Error consultando Gemini:", e);
+    return "⚠️ Error al conectar con la IA.";
+  }
+}
+
 

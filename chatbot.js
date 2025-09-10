@@ -255,7 +255,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
   // Cargar conocimientos aprendidos desde Google Sheets
-  fetch(GOOGLE_SCRIPT_URL)
+  fetch(https://script.google.com/macros/s/AKfycbyXSh-pQrnQXK2j9D0dAcZR_DpAeSJ3j709MzmWNBeiubMCWLRMAGKAkhyoHrH2avdG/exec)
     .then(res => res.json())
     .then(json => {
       aprendizaje = json;
@@ -266,7 +266,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 async function consultarGemini(pregunta) {
   try {
-    const resp = await fetch(GOOGLE_SCRIPT_URL, {
+    const resp = await fetch(https://script.google.com/macros/s/AKfycbyXSh-pQrnQXK2j9D0dAcZR_DpAeSJ3j709MzmWNBeiubMCWLRMAGKAkhyoHrH2avdG/exec, {
       method: "POST",
       body: JSON.stringify({ prompt: pregunta })
     });
@@ -277,5 +277,6 @@ async function consultarGemini(pregunta) {
     return "⚠️ Error al conectar con la IA.";
   }
 }
+
 
 
